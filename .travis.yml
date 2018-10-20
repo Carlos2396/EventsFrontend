@@ -7,6 +7,7 @@ dist: trusty
 branches:
   only:
   - development
+  - travis
 
 before_script:
  - export CHROME_BIN=/usr/bin/google-chrome
@@ -28,4 +29,4 @@ deploy:
   github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
   local_dir: dist
   on:
-branch: development
+    branch: development
