@@ -6,22 +6,15 @@ cache:
   directories:
     - node_modules
 
+addons:
+  chrome: stable
+
 node_js:
-  - "6"
-  - "7"
   - "8"
 
-matrix:
-  fast_finish: true
-
-before_install:
-  - npm install npm@5 -g
-  - npm cache verify
-  - npm prune
-  - npm update
-
-install:
-  - npm install
+before_script:
+  - npm install -g @angular/cli
 
 script:
-- npm run ci:travis
+  - ng build --prod --aot
+- ng test
