@@ -12,13 +12,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NotificationTestingComponent } from './components/notification-testing/notification-testing.component';
 import { FormsModule } from '@angular/forms';
+import { RegisterComponent } from './components/auth/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     LoginComponent,
-    NotificationTestingComponent
+    NotificationTestingComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

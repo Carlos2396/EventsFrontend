@@ -68,7 +68,7 @@ export class APIService {
    */
   register(body:any) {
     return this.http.post(
-      this.endpoint + '/register',
+      this.endpoint + '/users',
       body,
       { headers: this.headers }
     );

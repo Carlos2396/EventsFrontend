@@ -1,0 +1,192 @@
+<section class="module bg-dark-30" data-background="assets/images/section-4.jpg">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <h1 class="module-title font-alt mb-0">Login-Register</h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="module">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 mb-sm-40">
+        <h4 class="font-alt">Crea una cuenta</h4>
+        <hr class="divider-w mb-10">
+        <form class="form" [formGroup]="registerForm" (ngSubmit)="register()">
+
+          <!-- Firstname -->
+          <div [ngClass]="{'form-group': true, 'has-error': submitted && f.firstname.errors}">
+            <input type="text" class="form-control" formControlName="firstname" placeholder="Nombre(s)" />
+
+            <!-- Frontend errors -->
+            <div *ngIf="submitted && f.firstname.errors">
+              <span *ngIf="submitted && f.firstname.errors.required" class="text-danger">Introduce tu nombre</span>
+            </div>
+
+            <!-- Backend errors -->
+            <div *ngFor="let err of errors.firstname">
+              <span class="text-danger">{{ err }}</span>
+            </div>
+          </div>
+
+          <!-- Lastname -->
+          <div [ngClass]="{'form-group': true, 'has-error': submitted && f.lastname.errors}">
+            <input type="text" class="form-control" formControlName="lastname" placeholder="Apellido(s)" />
+
+            <!-- Frontend errors -->
+            <div *ngIf="submitted && f.lastname.errors">
+              <span *ngIf="submitted && f.lastname.errors.required" class="text-danger">Introduce tu apellido</span>
+            </div>
+
+            <!-- Backend errors -->
+            <div *ngFor="let err of errors.lastname">
+              <span class="text-danger">{{ err }}</span>
+            </div>
+          </div>
+
+          <!-- Alias -->
+          <div [ngClass]="{'form-group': true, 'has-error': submitted && f.alias.errors}">
+            <input type="text" class="form-control" formControlName="alias" placeholder="Nombre de usuario" />
+
+            <!-- Frontend errors -->
+            <div *ngIf="submitted && f.alias.errors">
+              <span *ngIf="submitted && f.alias.errors.required" class="text-danger">Introduce tu nombre de usuario</span>
+            </div>
+
+            <!-- Backend errors -->
+            <div *ngFor="let err of errors.alias">
+              <span class="text-danger">{{ err }}</span>
+            </div>
+          </div>
+
+          <!-- Teléfono -->
+          <div [ngClass]="{'form-group': true, 'has-error': submitted && f.phone.errors}">
+            <input type="text" class="form-control" formControlName="phone" placeholder="Teléfono" />
+
+            <!-- Frontend errors -->
+            <div *ngIf="submitted && f.phone.errors">
+              <span *ngIf="submitted && f.phone.errors.required" class="text-danger">Introduce tu número telefónico</span>
+            </div>
+
+            <!-- Backend errors -->
+            <div *ngFor="let err of errors.phone">
+              <span class="text-danger">{{ err }}</span>
+            </div>
+          </div>
+
+          <!-- Birthdate -->
+          <div [ngClass]="{'form-group': true, 'has-error': submitted && f.birthdate.errors}">
+            <div class="col-m-12">
+              <label>Fecha de nacimiento</label>
+            </div>
+            <input type="date" class="form-control" formControlName="birthdate" placeholder="Fecha de nacimiento" />
+
+            <!-- Frontend errors -->
+            <div *ngIf="submitted && f.birthdate.errors">
+              <span *ngIf="submitted && f.birthdate.errors.required" class="text-danger">Introduce tu fecha de
+                nacimiento</span>
+            </div>
+
+            <!-- Backend errors -->
+            <div *ngFor="let err of errors.birthdate">
+              <span class="text-danger">{{ err }}</span>
+            </div>
+          </div>
+
+          <!-- Gender -->
+          <div [ngClass]="{'form-group': true, 'has-error': submitted && f.gender.errors}">
+            <div class="col-m-12">
+              <label>Género</label>
+            </div>
+
+            <div class="col-md-4">
+              <span>
+                <input type="radio" name="gender" formControlName="gender" value="female">
+                Femenino
+              </span>
+            </div>
+            <div class="col-md-4">
+              <span>
+                <input type="radio" name="gender" formControlName="gender" value="male">
+                Masculino
+              </span>
+            </div>
+            <div class="col-md-4">
+              <span>
+                <input type="radio" name="gender" formControlName="gender" value="other">
+                Otro
+              </span>
+            </div>
+
+            <!-- Frontend errors -->
+            <div *ngIf="submitted && f.gender.errors">
+              <span *ngIf="submitted && f.gender.errors.required" class="text-danger">Escoge tu género</span>
+            </div>
+
+            <!-- Backend errors -->
+            <div *ngFor="let err of errors.gender">
+              <span class="text-danger">{{ err }}</span>
+            </div>
+          </div>
+
+          <br>
+
+          <!-- Email -->
+          <div [ngClass]="{'form-group': true, 'has-error': submitted && f.email.errors}">
+            <input type="email" class="form-control" formControlName="email" placeholder="Correo electrónico" />
+
+            <!-- Frontend errors -->
+            <div *ngIf="submitted && f.email.errors">
+              <span *ngIf="submitted && f.email.errors.required" class="text-danger">Introduce tu correo electrónico</span>
+              <span *ngIf="submitted && f.email.errors.email" class="text-danger">Introduce un correo electrónico
+                válido</span>
+            </div>
+
+            <!-- Backend errors -->
+            <div *ngFor="let err of errors.email">
+              <span class="text-danger">{{ err }}</span>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div [ngClass]="{'form-group': true, 'has-error': submitted && f.password.errors}">
+            <input type="password" class="form-control" formControlName="password" placeholder="Contraseña" />
+
+            <!-- Frontend errors -->
+            <div *ngIf="submitted && f.email.errors">
+              <span *ngIf="submitted && f.password.errors.required" class="text-danger">Escribe una contraseña</span>
+            </div>
+
+            <!-- Backend errors -->
+            <div *ngFor="let err of errors.password">
+              <span class="text-danger">{{ err }}</span>
+            </div>
+          </div>
+
+          <!-- Password confirmation -->
+          <div [ngClass]="{'form-group': true, 'has-error': submitted && f.password_confirmation.errors}">
+            <input type="password" class="form-control" formControlName="password_confirmation" placeholder="Reescribe tu contraseña" />
+
+            <!-- Frontend errors -->
+            <div *ngIf="submitted && f.email.errors">
+              <span *ngIf="submitted && f.password_confirmation.errors.required" class="text-danger">Reescribe tu
+                contraseña</span>
+            </div>
+
+            <!-- Backend errors -->
+            <div *ngFor="let err of errors.password_confirmation">
+              <span class="text-danger">{{ err }}</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button class="btn btn-round btn-b">Registrarme</button>
+          </div>
+          <div class="form-group"><a href="">¿Olvidaste tu contraseña?</a></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
