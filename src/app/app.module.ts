@@ -6,19 +6,21 @@ import { AppComponent } from './app.component';
 import { APIService } from './services/api.service';
 import { AuthService } from './services/auth.service';
 import { NavigationComponent } from './components/navigation/navigation.component';
-import { ContainerComponent } from './components/auth/container/container.component';
 import { LoginComponent } from './components/auth/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    ContainerComponent,
     LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     APIService,
