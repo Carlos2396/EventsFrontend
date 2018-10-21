@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
             (res) => {
                 console.log(res);
                 this.auth.setSession(res);
+                this.notification.printSuccessMessage("Has iniciado sesión.");
                 this.router.navigate([this.redirectURL]);
             },
             (err: HttpErrorResponse) => {

@@ -1,15 +1,36 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { User } from '../../models/user.model';
+import { HttpErrorResponse } from '@angular/common/http';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
-  selector: 'app-navigation',
-  templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.css']
+    selector: 'app-navigation',
+    templateUrl: './navigation.component.html',
+    styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
+    
+    constructor(private auth:AuthService, private notification:NotificationService) { }
 
-  constructor() { }
+    ngOnInit() {
+    }
 
-  ngOnInit() {
-  }
-
+    logout() {
+        this.auth.logout()
+        .subscribe(
+            (res) => {
+                this.auth.removeSession();
+                this.notification.printSuccessMessage("Se ha cerrado tu sesión.");
+            },
+            (err:HttpErrorResponse) => {
+                if(err.status == 0) { // no response from server
+                    this.notification.printNoticeMessage("Intenta de nuevo más tarde.");
+                }
+                else {
+                    this.notification.printErrorMessage(err.error.message);
+                }
+            }
+        )
+    }
 }

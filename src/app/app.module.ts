@@ -20,7 +20,7 @@ import { RegisterComponent } from './components/auth/register/register.component
     NavigationComponent,
     LoginComponent,
     NotificationTestingComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
