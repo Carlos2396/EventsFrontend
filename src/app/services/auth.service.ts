@@ -21,9 +21,8 @@ export class AuthService {
 
   // Make the post request with the id and password provided, if successful, sets session data
   login(id:string, password:string) {
-    let user;
     let body = {
-      user_id: id,
+      email: id,
       password: password
     }
 

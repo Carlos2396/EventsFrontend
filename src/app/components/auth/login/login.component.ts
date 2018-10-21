@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
     selector: 'app-login',
@@ -9,14 +10,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    loginForm: FormGroup;
     submitted = false;
+    errors = {};
+    redirectURL = '/';
+
+    loginForm: FormGroup;
+    
 
     constructor(private auth:AuthService, private router:Router, private formBuilder:FormBuilder) { }
 
     ngOnInit() {
         if(this.auth.isLoggedIn()) {
-            this.router.navigate(['home']);
+            this.router.navigate([this.redirectURL]);
         }
 
         this.loginForm = this.formBuilder.group({
@@ -34,6 +39,22 @@ export class LoginComponent implements OnInit {
             return;
         }
 
-        this
+        this.auth.login(this.loginForm.value.email, this.loginForm.value.password)
+        .subscribe(
+            (res) => {
+                console.log(res);
+                this.auth.setSession(res);
+                this.router.navigate([this.redirectURL]);
+            },
+            (err: HttpErrorResponse) => {
+                if(err.status == 400) { // validation errors
+                    this.errors = err.error.errors;
+                    console.log(this.errors);
+                }
+                else { // other errors, call error handler
+
+                }
+            }
+        );
     }
 }

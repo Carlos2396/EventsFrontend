@@ -15,12 +15,35 @@
                 <h4 class="font-alt">Inicia sesión</h4>
                 <hr class="divider-w mb-10">
                 <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
-                    <div class="form-group">
-                        <input class="form-control" formControlName="email" [ngClass]="{ 'is-invalid':}"/>
+                    <div [ngClass]="{'form-group': true, 'has-error': submitted && f.email.errors}">
+                        <input type="email" class="form-control" formControlName="email" placeholder="Correo electrónico"/>
+                        
+                        <!-- Frontend errors -->
+                        <div *ngIf="submitted && f.email.errors">
+                            <span *ngIf="submitted && f.email.errors.required" class="text-danger">Introduce tu correo electrónico</span>
+                            <span *ngIf="submitted && f.email.errors.email" class="text-danger">Introduce un correo electrónico válido</span>        
+                        </div>
+
+                        <!-- Backend errors -->
+                        <div *ngFor="let err of errors.email">
+                            <span  class="text-danger">{{ err }}</span>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input class="form-control" id="password" type="password" name="password" placeholder="Contraseña" [(NgModel)]="password"/>
+
+                    <div [ngClass]="{'form-group': true, 'has-error': submitted && f.password.errors}">
+                        <input type="password" class="form-control" formControlName="password" placeholder="Contraseña"/>
+                        
+                        <!-- Frontend errors -->
+                        <div *ngIf="submitted && f.email.errors">
+                            <span *ngIf="submitted && f.password.errors.required" class="text-danger">Introduce tu contraseña</span>
+                        </div>
+
+                        <!-- Backend errors -->
+                        <div *ngFor="let err of errors.password">
+                            <span  class="text-danger">{{ err }}</span>
+                        </div>
                     </div>
+
                     <div class="form-group">
                         <button class="btn btn-round btn-b">Iniciar sesión</button>
                     </div>
