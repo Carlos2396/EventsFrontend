@@ -26,7 +26,15 @@ export class EventsIndexComponent implements OnInit {
   }
 
   getAllEvents(){
-    this.api.list(Event.endpoint);
+    this.api.list(Event.endpoint).subscribe(
+      (res:Event[])=>{
+        console.log(res);
+        this.events = res;
+      },
+      (err:HttpErrorResponse) => {
+        this.notification.handleError(err);
+      }
+    )
   }
   
 
