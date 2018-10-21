@@ -6,6 +6,7 @@ import { Extra } from "./extra.model";
 import { Answer } from "./answer.model";
 
 export class Event {
+    static readonly endpoint = "events";
     constructor(
         public name: string,
         public starts: Date,
