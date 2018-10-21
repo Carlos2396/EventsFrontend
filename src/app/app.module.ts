@@ -5,22 +5,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { APIService } from './services/api.service';
 import { AuthService } from './services/auth.service';
+import { NotificationService } from './services/notification.service';
 import { NavigationComponent } from './components/navigation/navigation.component';
-import { EventsIndexComponent } from './events/events-index/events-index.component';
+import { NotificationTestingComponent } from './components/notification-testing/notification-testing.component';
+import { EventsIndexComponent } from './components/events/events-index/events-index.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    EventsIndexComponent
+    EventsIndexComponent,
+    NotificationTestingComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     APIService,
-    AuthService
+    AuthService,
+    NotificationService
   ],
   bootstrap: [AppComponent]
 })
