@@ -1,0 +1,55 @@
+<section class="module bg-dark-30" data-background="assets/images/section-4.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <h1 class="module-title font-alt mb-0">Login-Register</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="module">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 mb-sm-40">
+                <h4 class="font-alt">Inicia sesión</h4>
+                <hr class="divider-w mb-10">
+                <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
+                    <div [ngClass]="{'form-group': true, 'has-error': submitted && f.email.errors}">
+                        <input type="email" class="form-control" formControlName="email" placeholder="Correo electrónico"/>
+                        
+                        <!-- Frontend errors -->
+                        <div *ngIf="submitted && f.email.errors">
+                            <span *ngIf="submitted && f.email.errors.required" class="text-danger">Introduce tu correo electrónico</span>
+                            <span *ngIf="submitted && f.email.errors.email" class="text-danger">Introduce un correo electrónico válido</span>        
+                        </div>
+
+                        <!-- Backend errors -->
+                        <div *ngFor="let err of errors.email">
+                            <span  class="text-danger">{{ err }}</span>
+                        </div>
+                    </div>
+
+                    <div [ngClass]="{'form-group': true, 'has-error': submitted && f.password.errors}">
+                        <input type="password" class="form-control" formControlName="password" placeholder="Contraseña"/>
+                        
+                        <!-- Frontend errors -->
+                        <div *ngIf="submitted && f.email.errors">
+                            <span *ngIf="submitted && f.password.errors.required" class="text-danger">Introduce tu contraseña</span>
+                        </div>
+
+                        <!-- Backend errors -->
+                        <div *ngFor="let err of errors.password">
+                            <span  class="text-danger">{{ err }}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-round btn-b">Iniciar sesión</button>
+                    </div>
+                    <div class="form-group"><a href="">¿Olvidaste tu contraseña?</a></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
