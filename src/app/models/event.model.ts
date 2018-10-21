@@ -13,6 +13,7 @@ export class Event {
         public end: Date,
         public registration_start: Date,
         public registration_end: Date,
+        public code?: string,
         public image?: string,
         public description?: string,
         public organizer?: User,

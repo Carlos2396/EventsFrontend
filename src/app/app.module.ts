@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NotificationTestingComponent } from './components/notification-testing/notification-testing.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/auth/register/register.component';
+import { TicketsListComponent } from './components/tickest/tickets-list/tickets-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { RegisterComponent } from './components/auth/register/register.component
     NavigationComponent,
     LoginComponent,
     NotificationTestingComponent,
-    RegisterComponent
+    RegisterComponent,
+    TicketsListComponent
   ],
   imports: [
     BrowserModule,
