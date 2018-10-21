@@ -1,0 +1,15 @@
+<section class="module-small bg-dark p-0">
+    <div class="container">
+        <div class="row client">
+            <div class="owl-carousel text-center" data-items="6" data-pagination="false" data-navigation="false">
+                <div class="owl-item">
+                    <div class="col-sm-12">
+                        <div *ngFor="let sponsor of sponsors" class="client-logo">
+                            <img src="assets/images/client-logo-1.png" alt="{{sponsor.name}}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
