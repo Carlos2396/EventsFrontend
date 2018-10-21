@@ -4,6 +4,8 @@ import { Extra } from "./extra.model";
 import { Answer } from "./answer.model";
 
 export class User {
+    public static readonly endpoint = 'users';
+    
     constructor(
         public email: string,
         public firstname: string,

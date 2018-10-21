@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { AuthService } from './auth.service';
-import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -69,7 +68,7 @@ export class APIService {
    */
   register(body:any) {
     return this.http.post(
-      this.endpoint + '/register',
+      this.endpoint + '/users',
       body,
       { headers: this.headers }
     );
