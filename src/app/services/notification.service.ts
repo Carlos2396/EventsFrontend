@@ -4,18 +4,18 @@ import PNotifyButtons from 'pnotify/dist/es/PNotifyButtons';
 PNotify.defaults.styling = 'bootstrap3';
 PNotify.defaults.icons = 'bootstrap3';
 
-enum NotificationType{
-  Error = "ERROR", //Red
-  Informative = "INFORMATIVE", //Blue
-  Notice = "NOTICE", //Yellow
-  Success = "SUCCESS" //Green
-}
-
 @Injectable({
   providedIn: 'root'
 })
 
 export class NotificationService {
+
+  notificationType = {
+    error : "ERROR",
+    informative: "INFORMATIVE", //Blue
+    notice: "NOTICE", //Yellow
+    success: "SUCCESS" //Green
+  }
 
   constructor() {
     PNotifyButtons;
@@ -48,24 +48,28 @@ export class NotificationService {
 
   printErrorMessage(message){
     PNotify.error({
+      title: "Try again",
       text: message
     });
   }
 
   printNoticeMessage(message){
     PNotify.notice({
+      title: "We're having some issues",
       text: message
     });
   }
 
   printInformativeMessage(message){
     PNotify.info({
+      title: "Just so you know",
       text: message
     });
   }
 
   printSuccessMessage(message){
     PNotify.success({
+      title: "Congratulations!",
       text: message
     });
   }
