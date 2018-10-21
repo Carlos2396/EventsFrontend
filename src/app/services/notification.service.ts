@@ -48,28 +48,28 @@ export class NotificationService {
 
   printErrorMessage(message){
     PNotify.error({
-      title: "Try again",
+      title: "Algo salió mal",
       text: message
     });
   }
 
   printNoticeMessage(message){
     PNotify.notice({
-      title: "We're having some issues",
+      title: "Estamos teniendo dificultades",
       text: message
     });
   }
 
   printInformativeMessage(message){
     PNotify.info({
-      title: "Just so you know",
+      title: "Deberías saber esto",
       text: message
     });
   }
 
   printSuccessMessage(message){
     PNotify.success({
-      title: "Congratulations!",
+      title: "¡Felicidades!",
       text: message
     });
   }
