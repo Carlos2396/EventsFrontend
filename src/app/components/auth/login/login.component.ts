@@ -3,6 +3,7 @@ import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NotificationService } from '../../../services/notification.service';
 
 @Component({
     selector: 'app-login',
@@ -15,14 +16,13 @@ export class LoginComponent implements OnInit {
     redirectURL = '/';
 
     loginForm: FormGroup;
-    
 
-    constructor(private auth:AuthService, private router:Router, private formBuilder:FormBuilder) { }
+    constructor(private auth:AuthService, private router:Router, private formBuilder:FormBuilder, private notification:NotificationService) { }
 
     ngOnInit() {
-        if(this.auth.isLoggedIn()) {
+        /*if(this.auth.isLoggedIn()) {
             this.router.navigate([this.redirectURL]);
-        }
+        }*/
 
         this.loginForm = this.formBuilder.group({
             email: ['', [Validators.required, Validators.email]],
@@ -47,12 +47,14 @@ export class LoginComponent implements OnInit {
                 this.router.navigate([this.redirectURL]);
             },
             (err: HttpErrorResponse) => {
+                console.log(err);
                 if(err.status == 400) { // validation errors
-                    this.errors = err.error.errors;
-                    console.log(this.errors);
+                    this.errors = err.error.errors;   
+                    this.notification.printErrorMessage(err.error.message);
                 }
-                else { // other errors, call error handler
 
+                if(err.status == 0) { // no response from server
+                    this.notification.printNoticeMessage("Intenta de nuevo más tarde.");
                 }
             }
         );
