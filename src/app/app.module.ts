@@ -5,26 +5,32 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { APIService } from './services/api.service';
 import { AuthService } from './services/auth.service';
+import { NotificationService } from './services/notification.service';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NotificationTestingComponent } from './components/notification-testing/notification-testing.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    LoginComponent
+    LoginComponent,
+    NotificationTestingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     APIService,
-    AuthService
+    AuthService,
+    NotificationService
   ],
   bootstrap: [AppComponent]
 })
