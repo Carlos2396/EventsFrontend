@@ -15,6 +15,8 @@ import { FormsModule } from '@angular/forms';
 import { CreateComponent } from './components/answers/create/create.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { SponsorsIndexComponent } from './components/sponsors/sponsors-index/sponsors-index.component';
+import { LocationIndexComponent } from './components/locations/location-index/location-index.component';
+import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -24,19 +26,22 @@ import { SponsorsIndexComponent } from './components/sponsors/sponsors-index/spo
     NotificationTestingComponent,
     CreateComponent,
     RegisterComponent,
-    SponsorsIndexComponent
+    SponsorsIndexComponent,
+    LocationIndexComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AgmCoreModule.forRoot({apiKey: 'AIzaSyBIuKYKKyElbSMI74Thrh9zaK8BPAyHs1M'}),
   ],
   providers: [
     APIService,
     AuthService,
-    NotificationService
+    NotificationService,
+    GoogleMapsAPIWrapper
   ],
   bootstrap: [AppComponent]
 })
