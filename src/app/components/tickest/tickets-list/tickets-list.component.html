@@ -1,0 +1,18 @@
+<section class="module">
+  <div class="container">
+    <div class="row multi-columns-row">
+      <div class="col-sm-6 col-md-3 col-lg-3" *ngFor="let event of user.events">
+        <div class="price-table font-alt">
+          <h4>{{event.name}}</h4>
+          <div class="borderline"></div>
+          <img src="../../../../assets/images/blog_bg.jpg">
+          <img src="">
+          <ul class="price-details">
+            <li>Empieza: {{event.starts}}</li>
+            <li>Termina: {{event.end}}</li>
+          </ul><a class="btn btn-d btn-round" (click)="irApag(event.id)">Ir a pagina del evento</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
