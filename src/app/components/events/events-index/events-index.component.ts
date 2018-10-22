@@ -26,6 +26,7 @@ export class EventsIndexComponent implements OnInit {
   }
 
   getAllEvents(){
+    console.log("holi");
     this.api.list(Event.endpoint).subscribe(
       (res:Event[])=>{
         console.log(res);
