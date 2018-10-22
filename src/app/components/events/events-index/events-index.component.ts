@@ -38,6 +38,9 @@ export class EventsIndexComponent implements OnInit {
     )
   }
   
-
+  toShowEvent($id){
+    console.log($id);
+    this.router.navigate(["events/"+$id]);
+  }
 
 }
