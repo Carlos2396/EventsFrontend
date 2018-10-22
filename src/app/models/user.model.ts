@@ -10,7 +10,7 @@ export class User {
         public email: string,
         public firstname: string,
         public lastname: string,
-        public gender: Gender,
+        public gender: string,
         public image?: string,
         public phone?: string,
         public alias?: string,

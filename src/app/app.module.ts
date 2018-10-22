@@ -14,9 +14,10 @@ import { NotificationTestingComponent } from './components/notification-testing/
 import { FormsModule } from '@angular/forms';
 import { CreateComponent } from './components/answers/create/create.component';
 import { RegisterComponent } from './components/auth/register/register.component';
+import { TicketsListComponent } from './components/tickest/tickets-list/tickets-list.component';
 import { SponsorsIndexComponent } from './components/sponsors/sponsors-index/sponsors-index.component';
 import { LocationIndexComponent } from './components/locations/location-index/location-index.component';
-import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
+import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core'; 
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
     NotificationTestingComponent,
     CreateComponent,
     RegisterComponent,
+    TicketsListComponent,
     SponsorsIndexComponent,
     LocationIndexComponent,
   ],

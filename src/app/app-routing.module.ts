@@ -3,10 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/auth/login/login.component';
 import { CreateComponent } from './components/answers/create/create.component';
 import { RegisterComponent } from './components/auth/register/register.component';
+import { TicketsListComponent } from './components/tickest/tickets-list/tickets-list.component';
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
+    { path: 'tickets', component: TicketsListComponent},
     { path: 'registerEvent/:id', component: CreateComponent} //Cambiar al componente completo.
 ];
 
