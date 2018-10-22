@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/auth/login/login.component';
+import { CreateComponent } from './components/answers/create/create.component';
 
 const routes: Routes = [
-    { path: 'login', component: LoginComponent }
+    { path: 'login', component: LoginComponent },
+    { path: 'registerEvent/:id', component: CreateComponent} //Cambiar al componente completo.
 ];
 
 @NgModule({

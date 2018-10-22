@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <h3 class="font-alt mb-0">Preguntas</h3>
+        <form class="form"  (ngSubmit)="submitAnswers()">
+            <div *ngFor="let question of questions; index as i" class="panel panel-default">
+              <h4 class="font-alt mb-0">{{question}}</h4>
+              <div class="form-group">
+                <input [(ngModel)]='answers[i]' name="{{i}}" class="form-control input-lg" placeholder="Large input" type="text" required="true">
+              </div>
+            </div>
+            <button class="btn btn-b btn-round">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
