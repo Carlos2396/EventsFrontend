@@ -16,7 +16,7 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { TicketsListComponent } from './components/tickest/tickets-list/tickets-list.component';
 import { SponsorsIndexComponent } from './components/sponsors/sponsors-index/sponsors-index.component';
 import { LocationIndexComponent } from './components/locations/location-index/location-index.component';
-import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
+import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core'; 
 
 @NgModule({
   declarations: [

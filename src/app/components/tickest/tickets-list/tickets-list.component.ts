@@ -18,21 +18,32 @@ export class TicketsListComponent implements OnInit {
 
   constructor(private notification:NotificationService, private api:APIService, private auth:AuthService, private router:Router) { }
 
-  xs = [1,2,3,4,5,6]
   user: User;
 
   ngOnInit() {
     this.user = new User("", "", "", "");
-    this.api.retrieve(User.endpoint, this.auth.getUser().id)
-    .subscribe(
-      (res:User) => {
-        console.log(res);
-        this.user = res;
-      },
-      (err:HttpErrorResponse) => {
-        this.notification.handleError(err);
-      }
-    )
+    
+    if(this.auth.getUser() == null){
+      this.router.navigate(['/']);
+    }
+    else{
+      this.api.retrieve(User.endpoint, this.auth.getUser().id)
+      .subscribe(
+        (res:User) => {
+          console.log(res);
+          this.user = res;
+        },
+        (err:HttpErrorResponse) => {
+          this.notification.handleError(err);
+        }
+      )
+    }
+    
+  }
+
+  irApag($id){
+    console.log($id);
+    this.router.navigate(["events/"+$id]);
   }
 
 }
