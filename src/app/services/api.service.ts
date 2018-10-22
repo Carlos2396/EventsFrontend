@@ -11,6 +11,12 @@ export class APIService {
   endpoint:string;
   headers: HttpHeaders;
 
+  models = {
+    ANSWER: "answers",
+    EVENT: "events",
+    EXTRA: "extras"
+  }
+
   constructor(private http:HttpClient, private auth:AuthService) { 
     this.endpoint = environment.APIEndpoint;
     this.headers = new HttpHeaders({
