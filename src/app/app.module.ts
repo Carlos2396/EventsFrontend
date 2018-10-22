@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NotificationTestingComponent } from './components/notification-testing/notification-testing.component';
 import { FormsModule } from '@angular/forms';
+import { CreateComponent } from './components/answers/create/create.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { SponsorsIndexComponent } from './components/sponsors/sponsors-index/sponsors-index.component';
 import { LocationIndexComponent } from './components/locations/location-index/location-index.component';
@@ -23,6 +24,7 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
     NavigationComponent,
     LoginComponent,
     NotificationTestingComponent,
+    CreateComponent,
     RegisterComponent,
     SponsorsIndexComponent,
     LocationIndexComponent,
