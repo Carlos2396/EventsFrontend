@@ -14,6 +14,9 @@ import { NotificationTestingComponent } from './components/notification-testing/
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { TicketsListComponent } from './components/tickest/tickets-list/tickets-list.component';
+import { SponsorsIndexComponent } from './components/sponsors/sponsors-index/sponsors-index.component';
+import { LocationIndexComponent } from './components/locations/location-index/location-index.component';
+import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -22,19 +25,23 @@ import { TicketsListComponent } from './components/tickest/tickets-list/tickets-
     LoginComponent,
     NotificationTestingComponent,
     RegisterComponent,
-    TicketsListComponent
+    TicketsListComponent,
+    SponsorsIndexComponent,
+    LocationIndexComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AgmCoreModule.forRoot({apiKey: 'AIzaSyBIuKYKKyElbSMI74Thrh9zaK8BPAyHs1M'}),
   ],
   providers: [
     APIService,
     AuthService,
-    NotificationService
+    NotificationService,
+    GoogleMapsAPIWrapper
   ],
   bootstrap: [AppComponent]
 })
