@@ -4,7 +4,7 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { CreateComponent } from './components/answers/create/create.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { EventsIndexComponent } from './components/events/events-index/events-index.component';
-import { TicketsListComponent } from './components/tickest/tickets-list/tickets-list.component';
+import { TicketsListComponent } from './components/tickets/tickets-list/tickets-list.component'; 
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
