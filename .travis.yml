@@ -20,7 +20,6 @@ before_script:
 
 script: 
   - ng test --watch false
-  - npm run e2e
   - ng build 
 
 deploy:
