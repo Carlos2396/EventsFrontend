@@ -17,12 +17,12 @@ export class LoginComponent implements OnInit {
 
     loginForm: FormGroup;
 
-    constructor(private auth:AuthService, private router:Router, private formBuilder:FormBuilder, private notification:NotificationService) { }
+    constructor(public auth:AuthService, private router:Router, private formBuilder:FormBuilder, private notification:NotificationService) { }
 
     ngOnInit() {
-        /*if(this.auth.isLoggedIn()) {
+        if(this.auth.isLoggedIn()) {
             this.router.navigate([this.redirectURL]);
-        }*/
+        }
 
         this.loginForm = this.formBuilder.group({
             email: ['', [Validators.required, Validators.email]],

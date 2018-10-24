@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
     
-    constructor(private auth:AuthService, private notification:NotificationService, private router:Router) { }
+    constructor(public auth:AuthService, private notification:NotificationService, private router:Router) { }
 
     ngOnInit() {
     }
