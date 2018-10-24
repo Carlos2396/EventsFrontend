@@ -25,6 +25,7 @@ export class Event {
         public extras?: Extra[],
         public answers?: Answer[],
         public sponsors?: Sponsor[],
+        public guest_capacity?: number,
         public id?: number,
     ) { }
 }
