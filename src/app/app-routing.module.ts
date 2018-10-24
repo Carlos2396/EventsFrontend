@@ -7,11 +7,14 @@ import { EventsIndexComponent } from './components/events/events-index/events-in
 import { TicketsListComponent } from './components/tickets/tickets-list/tickets-list.component'; 
 
 const routes: Routes = [
+    { path: '', component:EventsIndexComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'events', component: EventsIndexComponent},
     { path: 'tickets', component: TicketsListComponent},
-    { path: 'registerEvent/:id', component: CreateComponent} //Cambiar al componente completo.
+    { path: 'registerEvent/:id', component: CreateComponent}, //Cambiar al componente completo.
+
+    { path: '**', component: EventsIndexComponent }
 ];
 
 @NgModule({

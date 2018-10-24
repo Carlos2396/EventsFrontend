@@ -27,7 +27,7 @@ export class TicketsListComponent implements OnInit {
       this.router.navigate(['/']);
     }
     else{
-      this.api.retrieve(User.endpoint, this.auth.getUser().id)
+      this.api.getLogged()
       .subscribe(
         (res:User) => {
           console.log(res);

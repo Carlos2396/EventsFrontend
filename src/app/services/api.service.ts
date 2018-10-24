@@ -81,21 +81,21 @@ export class APIService {
   }
   
   getLogged() {
-    this.http.get(
+    return this.http.get(
       this.endpoint + '/user',
       { headers: this.headers }
     )
   }
 
   updateAccount() {
-    this.http.put(
+    return this.http.put(
       this.endpoint + '/user',
       { headers: this.headers }
     )
   }
 
   deleteAccount() {
-    this.http.delete(
+    return this.http.delete(
       this.endpoint + '/user',
       { headers: this.headers }
     )

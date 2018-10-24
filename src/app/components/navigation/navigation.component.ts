@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationService } from '../../services/notification.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-navigation',
@@ -11,7 +12,7 @@ import { NotificationService } from '../../services/notification.service';
 })
 export class NavigationComponent implements OnInit {
     
-    constructor(private auth:AuthService, private notification:NotificationService) { }
+    constructor(private auth:AuthService, private notification:NotificationService, private router:Router) { }
 
     ngOnInit() {
     }
@@ -22,6 +23,7 @@ export class NavigationComponent implements OnInit {
             (res) => {
                 this.auth.removeSession();
                 this.notification.printSuccessMessage("Se ha cerrado tu sesión.");
+                this.router.navigate['login'];
             },
             (err:HttpErrorResponse) => {
                 if(err.status == 0) { // no response from server
