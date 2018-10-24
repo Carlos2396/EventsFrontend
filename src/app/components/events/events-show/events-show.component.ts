@@ -16,23 +16,22 @@ export class EventsShowComponent implements OnInit {
   constructor(private auth: AuthService,private notifications: NotificationService, private api:APIService, private router:Router, private route: ActivatedRoute) { }
 
   event: Event;
-  id: Number;
-  user_id: Number;
+  id: Number = 1;
   available_guests: number;
 
   ngOnInit() {
     this.id = parseInt(this.route.snapshot.params.id);
-    this.user_id = this.auth.getUser().id;
     this.api.retrieve(this.api.models.EVENT, this.id)
       .subscribe(
         (res: Event)=>{
           this.event = res;
+          this.available_guests = this.event.guest_capacity - this.event.attendees.length;
         },
         (err: HttpErrorResponse) => {
           this.notifications.handleError(err);
         }
       )
-    this.available_guests = this.event.guest_capacity - this.event.attendees.length;
+    
   }
 
 }
