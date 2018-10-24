@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LocationIndexComponent } from './location-index.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AgmMap, AgmInfoWindow, AgmMarker } from '@agm/core';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('LocationIndexComponent', () => {
   let component: LocationIndexComponent;
@@ -8,7 +11,8 @@ describe('LocationIndexComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LocationIndexComponent ]
+      declarations: [ LocationIndexComponent, AgmMap, AgmInfoWindow, AgmMarker ],
+      imports: [HttpClientModule, RouterTestingModule]
     })
     .compileComponents();
   }));
