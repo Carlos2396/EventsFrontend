@@ -11,7 +11,7 @@ describe('NavigationComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ NavigationComponent ],
-      imports: [ HttpClientModule, RouterTestingModule ]
+      imports: [ HttpClientModule, RouterTestingModule ],
     })
     .compileComponents();
   }));
