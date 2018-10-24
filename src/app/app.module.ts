@@ -15,10 +15,11 @@ import { EventsIndexComponent } from './components/events/events-index/events-in
 import { FormsModule } from '@angular/forms';
 import { CreateComponent } from './components/answers/create/create.component';
 import { RegisterComponent } from './components/auth/register/register.component';
-import { TicketsListComponent } from './components/tickest/tickets-list/tickets-list.component';
+import { TicketsListComponent } from './components/tickets/tickets-list/tickets-list.component';
 import { SponsorsIndexComponent } from './components/sponsors/sponsors-index/sponsors-index.component';
 import { LocationIndexComponent } from './components/locations/location-index/location-index.component';
-import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core'; 
+import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
+import { EventsShowComponent } from './components/events/events-show/events-show.component'; 
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
     TicketsListComponent,
     SponsorsIndexComponent,
     LocationIndexComponent,
+    EventsShowComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,29 @@
+<section class="module">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="post">
+          <div class="post-thumbnail">
+            <a href="#"><img src="assets/images/post-1.jpg" alt="Blog-post Thumbnail"></a>
+          </div>
+          <div class="post-header font-alt">
+            <h2 class="post-title">
+              <a href="#">{{event.name}}</a>
+            </h2>
+            <div class="post-meta">By {{event.organizer_id}}
+            </div>
+          </div>
+          <div class="post-entry">
+            <p>{{event.description}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-3 col-md-offset-1 sidebar">
+        <div class="widget">
+          <h4 class="widget-title font-alt">Acerca de este evento</h4>
+          <h5>Cupo: {{event.guest_capacity}} personas</h5>
+        </div>  
+      </div>
+    </div>
+  </div>
+</section>
