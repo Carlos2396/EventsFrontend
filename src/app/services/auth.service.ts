@@ -58,6 +58,13 @@ export class AuthService {
     localStorage.removeItem('expiresAt');
   }
 
+  confirmAccount(uuid:string) {
+    return this.http.get(
+        this.endpoint + '/confirm/' + uuid,
+        { headers: this.headers }
+    );
+  }
+
   isLoggedIn() {
     return moment().isBefore(this.getExpiration());
   }

@@ -24,10 +24,6 @@ export class APIService {
       'Accept': 'application/json',
       'Authorization': 'Bearer ' + this.auth.getToken()
     });
-
-    if(this.auth.isLoggedIn()) {
-      
-    }
   }
 
   /**

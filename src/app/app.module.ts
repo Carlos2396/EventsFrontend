@@ -19,7 +19,8 @@ import { TicketsListComponent } from './components/tickets/tickets-list/tickets-
 import { SponsorsIndexComponent } from './components/sponsors/sponsors-index/sponsors-index.component';
 import { LocationIndexComponent } from './components/locations/location-index/location-index.component';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
-import { EventsShowComponent } from './components/events/events-show/events-show.component'; 
+import { EventsShowComponent } from './components/events/events-show/events-show.component';
+import { AccountConfirmationComponent } from './components/auth/account-confirmation/account-confirmation.component'; 
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { EventsShowComponent } from './components/events/events-show/events-show
     SponsorsIndexComponent,
     LocationIndexComponent,
     EventsShowComponent,
+    AccountConfirmationComponent,
   ],
   imports: [
     BrowserModule,
