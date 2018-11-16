@@ -8,7 +8,7 @@ import { TicketsListComponent } from './components/tickets/tickets-list/tickets-
 import { EventsShowComponent } from './components/events/events-show/events-show.component';
 
 const routes: Routes = [
-    { path: '', component:EventsIndexComponent },
+    { path: '', component:LoginComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'events', component: EventsIndexComponent},

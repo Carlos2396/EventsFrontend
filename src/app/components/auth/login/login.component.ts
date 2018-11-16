@@ -13,7 +13,7 @@ import { NotificationService } from '../../../services/notification.service';
 export class LoginComponent implements OnInit {
     submitted = false;
     errors = {};
-    redirectURL = '/';
+    redirectURL = '/events';
 
     loginForm: FormGroup;
 

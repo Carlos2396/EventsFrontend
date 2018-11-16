@@ -21,11 +21,12 @@ export class APIService {
     this.endpoint = environment.APIEndpoint;
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Accept': 'application/json'
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ' + this.auth.getToken()
     });
 
     if(this.auth.isLoggedIn()) {
-      this.headers.set('Authorization', 'Bearer ' + this.auth.getToken());
+      
     }
   }
 
