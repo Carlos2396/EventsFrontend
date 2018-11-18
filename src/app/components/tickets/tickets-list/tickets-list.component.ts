@@ -8,6 +8,7 @@ import { Router, NavigationExtras } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { APIService } from '../../../services/api.service'
 import { NotificationService } from '../../../services/notification.service'
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-tickets-list',
@@ -16,7 +17,7 @@ import { NotificationService } from '../../../services/notification.service'
 })
 export class TicketsListComponent implements OnInit {
 
-  constructor(private notification:NotificationService, private api:APIService, private auth:AuthService, private router:Router) { }
+  constructor(private notification:NotificationService, private api:AccountService, private auth:AuthService, private router:Router) { }
 
   user: User;
 
