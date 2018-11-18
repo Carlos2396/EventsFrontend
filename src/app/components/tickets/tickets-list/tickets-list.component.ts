@@ -6,8 +6,7 @@ import { User } from "../../../models/user.model";
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router, NavigationExtras } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
-import { APIService } from '../../../services/api.service'
-import { NotificationService } from '../../../services/notification.service'
+import { NotificationService } from '../../../services/notification.service';
 import { AccountService } from 'src/app/services/account.service';
 
 @Component({
