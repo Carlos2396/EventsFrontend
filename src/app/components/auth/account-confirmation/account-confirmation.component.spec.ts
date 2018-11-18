@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AccountConfirmationComponent } from './account-confirmation.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('AccountConfirmationComponent', () => {
   let component: AccountConfirmationComponent;
@@ -8,7 +10,14 @@ describe('AccountConfirmationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AccountConfirmationComponent ]
+      declarations: [ AccountConfirmationComponent ],
+      imports: [
+          RouterTestingModule
+      ],
+      providers: [
+          HttpClient,
+          HttpHandler
+      ]
     })
     .compileComponents();
   }));
