@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-account-confirmation',
@@ -11,7 +12,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class AccountConfirmationComponent implements OnInit {
 
-  constructor(private notifications: NotificationService, private auth:AuthService, private router:Router, private route:ActivatedRoute) { }
+  constructor(private notifications: NotificationService, private account:AccountService, private router:Router, private route:ActivatedRoute) { }
 
   uuid: string;
 
@@ -19,7 +20,7 @@ export class AccountConfirmationComponent implements OnInit {
     this.uuid = this.route.snapshot.params.uuid;
     console.log(this.uuid);
 
-    this.auth.confirmAccount(this.uuid)
+    this.account.confirmAccount(this.uuid)
       .subscribe(
         (res) => {
             console.log(res);

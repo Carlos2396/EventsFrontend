@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
+import { share } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationService } from '../../../services/notification.service';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
     selector: 'app-login',
@@ -14,11 +16,13 @@ export class LoginComponent implements OnInit {
     redirectURL:string = '/events';
     submitted:boolean;
     confirmAccount:boolean;
+    emailSent:boolean;
+    forgetPassword:boolean;
     errors = {};
 
     loginForm: FormGroup;
 
-    constructor(public auth:AuthService, private router:Router, private formBuilder:FormBuilder, private notification:NotificationService) { }
+    constructor(public auth:AuthService, private account:AccountService, private router:Router, private formBuilder:FormBuilder, private notification:NotificationService) { }
 
     ngOnInit() {
         if(this.auth.isLoggedIn()) {
@@ -64,6 +68,64 @@ export class LoginComponent implements OnInit {
                         }
                     }
                     
+                }
+            }
+        );
+    }
+
+    resendConfirmation() {
+        if(this.emailSent) return;
+
+        this.emailSent = true;
+
+        this.account.resendConfirmationEmail(this.loginForm.value.email)
+        .subscribe(
+            (res) => {
+                this.errors = {};
+                this.notification.printSuccessMessage('Se ha reenviado el correo de confirmación. Revisa tu bandeja.');
+            },
+            (err:HttpErrorResponse) => {
+                this.errors = {};
+                this.emailSent = false;
+                if(err.status == 400) { // validation errors
+                    this.errors = err.error.errors; 
+                }
+                else {
+                    if(err.status > 400 && err.status < 500) {
+                        this.notification.printErrorMessage(err.error.message);
+                    }
+                    else {
+                        this.notification.printNoticeMessage("Intenta de nuevo más tarde.");
+                    }
+                }
+            }
+        );
+    }
+
+    sendResetPassword() {
+        if(this.forgetPassword) return;
+
+        this.forgetPassword = true;
+
+        this.account.sendPasswordReset(this.loginForm.value.email)
+        .subscribe(
+            (res) => {
+                this.errors = {};
+                this.notification.printSuccessMessage('Se te ha enviado un correo electrónico para reestablecer tu contraseña.');
+            },
+            (err:HttpErrorResponse) => {
+                this.errors = {};
+                this.forgetPassword = false;
+                if(err.status == 400) { // validation errors
+                    this.errors = err.error.errors; 
+                }
+                else {
+                    if(err.status > 400 && err.status < 500) {
+                        this.notification.printErrorMessage(err.error.message);
+                    }
+                    else {
+                        this.notification.printNoticeMessage("Intenta de nuevo más tarde.");
+                    }
                 }
             }
         );
