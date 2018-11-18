@@ -22,6 +22,7 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { EventsShowComponent } from './components/events/events-show/events-show.component';
 import { AccountConfirmationComponent } from './components/auth/account-confirmation/account-confirmation.component'; 
 import { AccountService } from './services/account.service';
+import { PasswordResetComponent } from './components/account/password-reset/password-reset.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { AccountService } from './services/account.service';
     LocationIndexComponent,
     EventsShowComponent,
     AccountConfirmationComponent,
+    PasswordResetComponent,
   ],
   imports: [
     BrowserModule,

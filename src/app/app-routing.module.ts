@@ -7,12 +7,14 @@ import { EventsIndexComponent } from './components/events/events-index/events-in
 import { TicketsListComponent } from './components/tickets/tickets-list/tickets-list.component';
 import { EventsShowComponent } from './components/events/events-show/events-show.component';
 import { AccountConfirmationComponent } from './components/auth/account-confirmation/account-confirmation.component';
+import { PasswordResetComponent } from './components/account/password-reset/password-reset.component';
 
 const routes: Routes = [
     { path: '', component:LoginComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'confirmar/:uuid', component: AccountConfirmationComponent },
+    { path: 'contraseña/reestablecer/:token', component: PasswordResetComponent },
     { path: 'events', component: EventsIndexComponent},
     { path: 'events/:id', component: EventsShowComponent},
     { path: 'tickets', component: TicketsListComponent},

@@ -82,4 +82,12 @@ export class AccountService {
       { headers: this.headers }
     );
   }
+
+  resetPassword(body) {
+    return this.http.post(
+        this.endpoint + '/password/reset',
+        body,
+        { headers: this.headers }
+    );
+  }
 }
