@@ -11,9 +11,10 @@ import { NotificationService } from '../../../services/notification.service';
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    submitted = false;
+    redirectURL:string = '/events';
+    submitted:boolean;
+    confirmAccount:boolean;
     errors = {};
-    redirectURL = '/events';
 
     loginForm: FormGroup;
 
@@ -42,20 +43,27 @@ export class LoginComponent implements OnInit {
         this.auth.login(this.loginForm.value.email, this.loginForm.value.password)
         .subscribe(
             (res) => {
-                console.log(res);
                 this.auth.setSession(res);
-                this.notification.printSuccessMessage("Has iniciado sesión.");
                 this.router.navigate([this.redirectURL]);
             },
             (err: HttpErrorResponse) => {
-                console.log(err);
+                this.errors = {};
                 if(err.status == 400) { // validation errors
-                    this.errors = err.error.errors;   
-                    this.notification.printErrorMessage(err.error.message);
+                    this.errors = err.error.errors; 
                 }
-
-                if(err.status == 0) { // no response from server
-                    this.notification.printNoticeMessage("Intenta de nuevo más tarde.");
+                else {
+                    if(err.status == 418) {
+                        this.confirmAccount = true;
+                    }
+                    else {
+                        if(err.status > 400 && err.status < 500) {
+                            this.notification.printErrorMessage(err.error.message);
+                        }
+                        else {
+                            this.notification.printNoticeMessage("Intenta de nuevo más tarde.");
+                        }
+                    }
+                    
                 }
             }
         );

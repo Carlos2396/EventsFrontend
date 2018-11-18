@@ -22,9 +22,9 @@ export class RegisterComponent implements OnInit {
   constructor(private auth:AuthService, private api:APIService, private router:Router, private formBuilder:FormBuilder, private notification:NotificationService) { }
 
   ngOnInit() {
-    /*if(this.auth.isLoggedIn()) {
+    if(this.auth.isLoggedIn()) {
         this.router.navigate([this.redirectURL]);
-    }*/
+    }
 
     this.registerForm = this.formBuilder.group({
         firstname: ['', Validators.required],

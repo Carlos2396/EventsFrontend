@@ -20,9 +20,9 @@ export class NavigationComponent implements OnInit {
         this.auth.logout()
         .subscribe(
             (res) => {
+                console.log(res);
                 this.auth.removeSession();
-                this.notification.printSuccessMessage("Se ha cerrado tu sesión.");
-                this.router.navigate['login'];
+                this.router.navigate(['login']);
             },
             (err:HttpErrorResponse) => {
                 if(err.status == 0) { // no response from server
