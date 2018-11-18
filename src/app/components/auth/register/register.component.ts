@@ -13,9 +13,9 @@ import { NotificationService } from '../../../services/notification.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-    submitted = false;
+    redirectURL:string = '/';
+    submitted:boolean = false;
     errors = {};
-    redirectURL = '/';
 
     registerForm: FormGroup;
 
@@ -52,18 +52,21 @@ export class RegisterComponent implements OnInit {
       this.api.register(this.registerForm.value)
       .subscribe(
         (res:User) => {
-            console.log(res);
+            this.notification.printSuccessMessage('Te has registrado exitosamente. Te hemos enviado un correo electrónico para verificar tu cuenta.');
             this.router.navigate(['login']);
         },
         (err: HttpErrorResponse) => {
-            console.log(err);
+            this.errors = {};
             if(err.status == 400) { // validation errors
-                this.errors = err.error.errors;   
-                this.notification.printErrorMessage(err.error.message);
+                this.errors = err.error.errors; 
             }
-
-            if(err.status == 0) { // no response from server
-                this.notification.printNoticeMessage("Intenta de nuevo más tarde.");
+            else {
+                if(err.status > 400 && err.status < 500) {
+                    this.notification.printErrorMessage(err.error.message);
+                }
+                else {
+                    this.notification.printNoticeMessage("Intenta de nuevo más tarde.");
+                }
             }
         }
       );

@@ -63,7 +63,6 @@ export class LoginComponent implements OnInit {
                             this.notification.printNoticeMessage("Intenta de nuevo más tarde.");
                         }
                     }
-                    
                 }
             }
         );
