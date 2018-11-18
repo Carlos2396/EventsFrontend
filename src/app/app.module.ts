@@ -21,6 +21,7 @@ import { LocationIndexComponent } from './components/locations/location-index/lo
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { EventsShowComponent } from './components/events/events-show/events-show.component';
 import { AccountConfirmationComponent } from './components/auth/account-confirmation/account-confirmation.component'; 
+import { LoggedService } from './services/logged.service';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { AccountConfirmationComponent } from './components/auth/account-confirma
     APIService,
     AuthService,
     NotificationService,
+    LoggedService,
     GoogleMapsAPIWrapper
   ],
   bootstrap: [AppComponent],
