@@ -5,6 +5,7 @@ import { share } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationService } from '../../../services/notification.service';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
     selector: 'app-login',
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
 
     loginForm: FormGroup;
 
-    constructor(public auth:AuthService, private router:Router, private formBuilder:FormBuilder, private notification:NotificationService) { }
+    constructor(public auth:AuthService, private account:AccountService, private router:Router, private formBuilder:FormBuilder, private notification:NotificationService) { }
 
     ngOnInit() {
         if(this.auth.isLoggedIn()) {
@@ -77,7 +78,7 @@ export class LoginComponent implements OnInit {
 
         this.emailSent = true;
 
-        this.auth.resendConfirmationEmail(this.loginForm.value.email)
+        this.account.resendConfirmationEmail(this.loginForm.value.email)
         .subscribe(
             (res) => {
                 this.errors = {};
@@ -106,7 +107,7 @@ export class LoginComponent implements OnInit {
 
         this.forgetPassword = true;
 
-        this.auth.sendPasswordReset(this.loginForm.value.email)
+        this.account.sendPasswordReset(this.loginForm.value.email)
         .subscribe(
             (res) => {
                 this.errors = {};
