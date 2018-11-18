@@ -65,6 +65,25 @@ export class AuthService {
     );
   }
 
+  resendConfirmationEmail(email:string) {
+    return this.http.get(
+        this.endpoint + '/resend/' + email,
+        { headers: this.headers }
+    );
+  }
+
+  sendPasswordReset(email:string) {
+    let body = {
+      'email': email
+    };
+
+    return this.http.post(
+      this.endpoint + '/password/create',
+      body,
+      { headers: this.headers }
+    );
+  }
+
   isLoggedIn() {
     return moment().isBefore(this.getExpiration());
   }
