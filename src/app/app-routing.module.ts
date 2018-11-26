@@ -8,7 +8,7 @@ import { TicketsListComponent } from './components/tickets/tickets-list/tickets-
 import { EventsShowComponent } from './components/events/events-show/events-show.component';
 import { AccountConfirmationComponent } from './components/auth/account-confirmation/account-confirmation.component';
 import { PasswordResetComponent } from './components/account/password-reset/password-reset.component';
-
+import { UserShowComponent } from './components/users/user-show/user-show.component';
 const routes: Routes = [
     { path: '', component:LoginComponent },
     { path: 'login', component: LoginComponent },
@@ -19,7 +19,7 @@ const routes: Routes = [
     { path: 'events/:id', component: EventsShowComponent},
     { path: 'tickets', component: TicketsListComponent},
     { path: 'registerEvent/:id', component: CreateComponent}, //Cambiar al componente completo.
-
+    { path: 'profile', component: UserShowComponent},
     { path: '**', component: EventsIndexComponent }
 ];
 

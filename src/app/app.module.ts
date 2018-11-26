@@ -23,6 +23,7 @@ import { EventsShowComponent } from './components/events/events-show/events-show
 import { AccountConfirmationComponent } from './components/auth/account-confirmation/account-confirmation.component'; 
 import { AccountService } from './services/account.service';
 import { PasswordResetComponent } from './components/account/password-reset/password-reset.component';
+import { UserShowComponent } from './components/users/user-show/user-show.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { PasswordResetComponent } from './components/account/password-reset/pass
     EventsShowComponent,
     AccountConfirmationComponent,
     PasswordResetComponent,
+    UserShowComponent,
   ],
   imports: [
     BrowserModule,
