@@ -20,6 +20,7 @@ export class EventsShowComponent implements OnInit {
   available_guests: number;
   userId: Number;
   ngOnInit() {
+    this.event = null;
     this.userId = this.auth.getUser().id;
     this.id = parseInt(this.route.snapshot.params.id);
     this.api.retrieve(this.api.models.EVENT, this.id)

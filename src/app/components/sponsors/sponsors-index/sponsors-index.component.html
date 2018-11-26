@@ -1,12 +1,18 @@
+<div class="row" *ngIf="userId == adminId">
+    <div class="col-sm-6">
+        <i class="fa fa-plus" (click)="addSponsor()"> Añadir patrocinador</i>
+    </div>
+</div>
+
 <section class="module-small bg-dark p-0">
     <div class="container">
         <div class="row client">
-            <div class="owl-carousel text-center" data-items="6" data-pagination="false" data-navigation="false">
-                
+            <div class="owl-carousel text-center" data-items="3" data-pagination="false" data-navigation="false">
                 <div *ngFor="let sponsor of sponsors" class="owl-item">
                     <div class="col-sm-12">
                         <div class="client-logo">
-                            <img src="assets/images/client-logo-1.png" alt="{{sponsor.name}}"/>
+                            <img src="{{sponsor.image}}" alt="{{sponsor.name}}"/>
+                            <i class="fa fa-minus" (click)="deleteSponsor(sponsor.id)" *ngIf="userId == adminId"> Eliminar</i>
                         </div>
                     </div>
                 </div>
