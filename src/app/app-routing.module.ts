@@ -11,6 +11,7 @@ import { PasswordResetComponent } from './components/account/password-reset/pass
 import { UserShowComponent } from './components/users/user-show/user-show.component';
 import { ShowIndividualComponent } from './components/answers/show-individual/show-individual.component';
 import { ShowGeneralComponent } from './components/answers/show-general/show-general.component';
+import { SponsorsCreateComponent } from './components/sponsors/sponsors-create/sponsors-create.component';
 
 const routes: Routes = [
     { path: '', component:LoginComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
     { path: 'confirmar/:uuid', component: AccountConfirmationComponent },
     { path: 'contraseña/reestablecer/:token', component: PasswordResetComponent },
     { path: 'events', component: EventsIndexComponent},
+    { path: 'events/sponsors/:eventId', component: SponsorsCreateComponent},
     { path: 'events/:id', component: EventsShowComponent},
     { path: 'events/:id/extras', component: ShowGeneralComponent},
     { path: 'events/:id/extras/:userId', component: ShowIndividualComponent},

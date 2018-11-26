@@ -26,6 +26,7 @@ import { PasswordResetComponent } from './components/account/password-reset/pass
 import { UserShowComponent } from './components/users/user-show/user-show.component';
 import { ShowIndividualComponent } from './components/answers/show-individual/show-individual.component';
 import { ShowGeneralComponent } from './components/answers/show-general/show-general.component';
+import { SponsorsCreateComponent } from './components/sponsors/sponsors-create/sponsors-create.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ShowGeneralComponent } from './components/answers/show-general/show-gen
     UserShowComponent,
     ShowIndividualComponent,
     ShowGeneralComponent,
+    SponsorsCreateComponent,
   ],
   imports: [
     BrowserModule,
