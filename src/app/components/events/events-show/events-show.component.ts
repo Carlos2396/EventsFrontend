@@ -18,8 +18,10 @@ export class EventsShowComponent implements OnInit {
   event: Event;
   id: Number = 1;
   available_guests: number;
-
+  userId: Number;
   ngOnInit() {
+    this.event = null;
+    this.userId = this.auth.getUser().id;
     this.id = parseInt(this.route.snapshot.params.id);
     this.api.retrieve(this.api.models.EVENT, this.id)
       .subscribe(
@@ -38,4 +40,15 @@ export class EventsShowComponent implements OnInit {
     this.router.navigate(["registerEvent/"+this.id]);
   }
 
+  deleteEvent($eventId){
+    this.api.delete(this.api.models.EVENT, $eventId)
+      .subscribe(
+        (res)=>{
+          this.router.navigate(["/"]);
+        },
+        (err: HttpErrorResponse) => {
+          this.notifications.handleError(err);
+        }
+      )
+  }
 }
