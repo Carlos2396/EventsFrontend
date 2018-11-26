@@ -8,6 +8,8 @@ import { TicketsListComponent } from './components/tickets/tickets-list/tickets-
 import { EventsShowComponent } from './components/events/events-show/events-show.component';
 import { AccountConfirmationComponent } from './components/auth/account-confirmation/account-confirmation.component';
 import { PasswordResetComponent } from './components/account/password-reset/password-reset.component';
+import { ShowIndividualComponent } from './components/answers/show-individual/show-individual.component';
+import { ShowGeneralComponent } from './components/answers/show-general/show-general.component';
 
 const routes: Routes = [
     { path: '', component:LoginComponent },
@@ -17,9 +19,10 @@ const routes: Routes = [
     { path: 'contraseña/reestablecer/:token', component: PasswordResetComponent },
     { path: 'events', component: EventsIndexComponent},
     { path: 'events/:id', component: EventsShowComponent},
+    { path: 'events/:id/extras', component: ShowGeneralComponent},
+    { path: 'events/:id/extras/:userId', component: ShowIndividualComponent},
     { path: 'tickets', component: TicketsListComponent},
     { path: 'registerEvent/:id', component: CreateComponent}, //Cambiar al componente completo.
-
     { path: '**', component: EventsIndexComponent }
 ];
 
