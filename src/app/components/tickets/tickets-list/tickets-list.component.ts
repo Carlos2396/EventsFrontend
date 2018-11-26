@@ -7,7 +7,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Router, NavigationExtras } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { NotificationService } from '../../../services/notification.service';
-import { AccountService } from 'src/app/services/account.service';
+import { APIService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-tickets-list',
@@ -16,22 +16,21 @@ import { AccountService } from 'src/app/services/account.service';
 })
 export class TicketsListComponent implements OnInit {
 
-  constructor(private notification:NotificationService, private api:AccountService, private auth:AuthService, private router:Router) { }
+  constructor(private notification:NotificationService, private api:APIService, private auth:AuthService, private router:Router) { }
 
-  user: User;
+  events: Event[];
 
   ngOnInit() {
-    this.user = new User("", "", "", "");
-    
     if(this.auth.getUser() == null){
       this.router.navigate(['/']);
     }
     else{
-      this.api.getLogged()
+      this.api.listTickets(this.auth.getUser().id)
       .subscribe(
-        (res:User) => {
+        (res:Event[]) => {
           console.log(res);
-          this.user = res;
+          console.log("lolol")
+          this.events = res;
         },
         (err:HttpErrorResponse) => {
           this.notification.handleError(err);
@@ -44,6 +43,26 @@ export class TicketsListComponent implements OnInit {
   irApag($id){
     console.log($id);
     this.router.navigate(["events/"+$id]);
+  }
+
+  deleteTicket($id){
+    var index = 0;
+    for(var i = 0; i < this.events.length; i++){
+      if(this.events[i].id == $id){
+        console.log("123")
+        index = i;
+      }
+    }
+    this.events.splice(index, 1);
+    this.api.deleteTickets(this.auth.getUser().id, $id)
+      .subscribe(
+        (res) => {
+          console.log(res);
+        },
+        (err:HttpErrorResponse) => {
+          this.notification.handleError(err);
+        }
+      ) 
   }
 
 }
