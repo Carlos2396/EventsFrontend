@@ -26,8 +26,8 @@
           <h5>Fecha del evento: {{event.starts | date:'medium'}}</h5>
           <h5>Fecha límite de registro: {{event.registration_end | date:'medium'}}</h5>
           <button class="btn btn-d btn-circle btn-block" *ngIf="userId != event.organizer.id">Registrarse</button>
-          <button class="btn btn-d btn-circle btn-block" *ngIf="userId == event.organizer.id">Editar evento</button>
-          <button class="btn btn-d btn-circle btn-block" *ngIf="userId == event.organizer.id" (click) = "deleteEvent(event.id)">Eliminar evento</button>
+          <button class="btn btn-info btn-circle btn-block" *ngIf="userId == event.organizer.id">Editar evento</button>
+          <button class="btn btn-danger btn-circle btn-block" *ngIf="userId == event.organizer.id" (click) = "deleteEvent(event.id)">Eliminar evento</button>
         </div>  
       </div>
     </div>
