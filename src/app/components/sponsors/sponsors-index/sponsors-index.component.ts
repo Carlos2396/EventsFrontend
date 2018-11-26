@@ -21,7 +21,12 @@ export class SponsorsIndexComponent implements OnInit {
 
     ngOnInit() {
         this.eventId = parseInt(this.route.snapshot.paramMap.get('id'));
-        this.userId = this.auth.getUser().id;
+        if(this.auth.getUser() != null){
+            this.userId = this.auth.getUser().id;
+        }
+        else{
+            this.userId = 1;
+        }
         this.api.retrieve(Event.endpoint, this.eventId)
         .subscribe(
             (res:Event) => {

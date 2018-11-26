@@ -11,7 +11,7 @@
             </div>
           </div>
           <div class="post-entry" >
-            <p>Cumpleaños: {{user.birthdate.substr(8, 2)}}/{{user.birthdate.substr(5, 2)}}/{{user.birthdate.substr(0, 4)}}</p>
+            <p *ngIf="user.birthdate != null">Cumpleaños: {{user.birthdate.substr(8, 2)}}/{{user.birthdate.substr(5, 2)}}/{{user.birthdate.substr(0, 4)}}</p>
             <p>Genero: {{user.gender}}</p>
             <p>Teléfono: {{user.phone}}</p>
           </div>
