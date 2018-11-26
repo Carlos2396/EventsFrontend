@@ -33,7 +33,11 @@ export class EventsShowComponent implements OnInit {
           this.notifications.handleError(err);
         }
       )
-    
+  }
+
+  toRegisterEvent(){
+    console.log(this.id);
+    this.router.navigate(["registerEvent/"+this.id]);
   }
 
   deleteEvent($eventId){

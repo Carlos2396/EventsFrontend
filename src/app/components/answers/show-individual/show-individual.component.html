@@ -1,0 +1,28 @@
+<section class="module bg-dark-30" data-background="assets/images/section-4.jpg">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+              <h1 class="module-title font-alt mb-0">Registro de asistente</h1>
+          </div>
+      </div>
+  </div>
+</section>
+
+<section class="module">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+          <h3 class="font-alt mb-0">Datos del inscrito</h3>
+          <h4 class="font-alt mb-0">{{user.firstname}} {{user.lastname}}</h4>
+          <h4 class="font-alt mb-0">{{user.email}}</h4>
+          <h3 class="font-alt mb-0">Respuestas</h3>
+              <div *ngFor="let question of questions; index as i" class="panel panel-default">
+                <label>{{question}}</label>
+                <br>
+                <label>{{getAnswer(i)}}</label>
+              </div>
+        </div>
+      </div>
+    </div>
+</section>
+
