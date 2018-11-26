@@ -6,6 +6,7 @@ import { Event } from '../../../models/event.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationService } from '../../../services/notification.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
     selector: 'app-sponsors-index',
@@ -17,7 +18,7 @@ export class SponsorsIndexComponent implements OnInit {
     sponsors:Sponsor[];
     userId: number;
     adminId: number;
-    constructor(private auth: AuthService,private api:APIService, private route:ActivatedRoute, private notification:NotificationService) { }
+    constructor(private auth: AuthService,private api:APIService, private route:ActivatedRoute, private notification:NotificationService, private router:Router) { }
 
     ngOnInit() {
         this.eventId = parseInt(this.route.snapshot.paramMap.get('id'));
@@ -56,6 +57,10 @@ export class SponsorsIndexComponent implements OnInit {
                 this.notification.handleError(err);
             }
         )
+    }
+
+    addSponsor($id){
+        this.router.navigate(["events/sponsors/"+this.eventId]);
     }
 
 }

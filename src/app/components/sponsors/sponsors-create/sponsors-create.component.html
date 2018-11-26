@@ -1,0 +1,27 @@
+<section class="module bg-dark-30" data-background="assets/images/section-4.jpg">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+              <h1 class="module-title font-alt mb-0">Patrocinadores</h1>
+          </div>
+      </div>
+  </div>
+</section>
+
+<section class="module">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 mb-sm-40">
+                <h4 class="font-alt">Patrocinadores</h4>
+                <hr class="divider-w mb-10">
+                <form class="form"  (ngSubmit)="createSponsor()">
+                    <div class="form-group">
+                      <input [(ngModel)]='nameS' type="text" name="sponsorName" class="form-control" placeholder="Nombre del patrocinador" required="true">
+                      <input [(ngModel)]='linkS' type="text" name="sponsorLink" class="form-control" placeholder="Link a la imagen" required="true">
+                    </div>
+                    <button class="btn btn-b btn-round">Submit</button>
+                </form>           
+            </div>
+        </div>
+    </div>
+</section>
