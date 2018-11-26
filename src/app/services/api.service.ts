@@ -104,4 +104,19 @@ export class APIService {
       { headers: this.headers }
     );
   }
+
+  //Other functions
+  filterAnswers(extra_id:any, user_id:any){
+    return this.http.get(
+      this.endpoint + '/extras/' + extra_id + '/' + user_id,
+      { headers: this.headers }
+    );
+  }
+
+  allAnswers(extra_id:any){
+    return this.http.get(
+      this.endpoint + '/extras/' + 'general/' + extra_id,
+      { headers: this.headers }
+    );
+  }
 }

@@ -24,6 +24,8 @@ import { AccountConfirmationComponent } from './components/auth/account-confirma
 import { AccountService } from './services/account.service';
 import { PasswordResetComponent } from './components/account/password-reset/password-reset.component';
 import { UserShowComponent } from './components/users/user-show/user-show.component';
+import { ShowIndividualComponent } from './components/answers/show-individual/show-individual.component';
+import { ShowGeneralComponent } from './components/answers/show-general/show-general.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { UserShowComponent } from './components/users/user-show/user-show.compon
     AccountConfirmationComponent,
     PasswordResetComponent,
     UserShowComponent,
+    ShowIndividualComponent,
+    ShowGeneralComponent,
   ],
   imports: [
     BrowserModule,
