@@ -31,6 +31,28 @@ export class APIService {
   }
 
   /**
+   * List tickets
+   */
+  listTickets(userId: string) {
+    this.refreshHeaders();
+    return this.http.get(
+      this.endpoint + '/tickets/' + userId,
+      { headers: this.headers }
+    );
+  }
+
+  /*
+   * Delete tickets
+   */
+  deleteTickets(userId:any, ticketId: any) {
+    this.refreshHeaders();
+    return this.http.delete(
+      this.endpoint + '/users/' + userId + '/events/' + ticketId,
+      { headers: this.headers }
+    )
+  }
+
+  /**
    * CRUD Requests
    */
   list(model: string) {
