@@ -90,4 +90,11 @@ export class APIService {
       { headers: this.headers }
     );
   }
+
+  allAnswers(extra_id:any){
+    return this.http.get(
+      this.endpoint + '/extras/' + 'general/' + extra_id,
+      { headers: this.headers }
+    );
+  }
 }

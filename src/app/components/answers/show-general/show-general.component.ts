@@ -39,7 +39,6 @@ export class ShowGeneralComponent implements OnInit {
   ngOnInit() {
     this.event_id = parseInt(this.route.snapshot.params.id);
     this.user_id = this.auth.getUser().id;
-    this.ticket_id = parseInt(this.route.snapshot.params.userId);
 
     this.user = this.auth.getUser();
 
@@ -52,7 +51,7 @@ export class ShowGeneralComponent implements OnInit {
             this.questions[i] = this.extras[i].text;
             this.extra_ids[i] = this.extras[i].id;
           }
-          this.api.filterAnswers(this.event_id, this.ticket_id)
+          this.api.allAnswers(this.event_id)
             .subscribe(
               (res: any) => {
                 console.log(res);
@@ -71,9 +70,8 @@ export class ShowGeneralComponent implements OnInit {
     
   }
 
-  getAnswer(index:number){
-    console.log(this.answers[index]);
-    return this.answers[index];
+  getAnswers(indexLarge:number, indexSmall: number){
+    return this.answers[indexLarge][indexSmall];
   }
 
 

@@ -24,6 +24,7 @@ export class ShowIndividualComponent implements OnInit {
   length:number = 0;
   questionCounter:number = 0;
   extra_ids = [];
+  attendees: User[];
 
   //Attendee
   user: User;
@@ -41,11 +42,12 @@ export class ShowIndividualComponent implements OnInit {
     this.user_id = this.auth.getUser().id;
     this.ticket_id = parseInt(this.route.snapshot.params.userId);
 
-    this.user = this.auth.getUser();
 
     this.api.retrieve(this.api.models.EVENT, this.event_id)
       .subscribe(
         (res: Event) => {
+          this.attendees = res.attendees;
+          this.findAttendee();
           this.extras = res.extras;
           var i;
           for (i = 0; i < this.extras.length; i++) {
@@ -74,6 +76,15 @@ export class ShowIndividualComponent implements OnInit {
   getAnswer(index:number){
     console.log(this.answers[index]);
     return this.answers[index];
+  }
+
+  findAttendee(){
+    for(var i = 0; i < this.attendees.length; i++){
+      if(this.attendees[i].id == this.ticket_id){
+        this.user = this.attendees[i];
+        return;
+      }
+    }
   }
 
 

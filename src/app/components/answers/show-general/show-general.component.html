@@ -13,9 +13,12 @@
     <div class="row">
       <div class="col-sm-8 col-sm-offset-2">
           <h3 class="font-alt mb-0">Respuestas</h3>
-              <div *ngFor="let question of questions; index as i" class="panel panel-default">
+              <div style="padding-left: 2%" *ngFor="let question of questions; index as i" class="panel panel-default">
                 <label>{{question}}</label>
-                <label>{{getAnswers(i)}}</label>
+                <ng-container *ngFor="let answer of answers; index as j">
+                  <p>{{getAnswers(i, j)}}</p>
+                </ng-container>
+                
               </div>
         </div>
       </div>
