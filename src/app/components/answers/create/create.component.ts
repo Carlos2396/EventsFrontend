@@ -67,7 +67,7 @@ export class CreateComponent implements OnInit {
         {arr: this.extras}
       ).subscribe(
         res =>{
-          this.notifications.printMessage(res, this.notifications.notificationType.informative);
+          this.createTicket();
         },
         err =>{
           console.log(err);
@@ -78,6 +78,21 @@ export class CreateComponent implements OnInit {
     else{
       this.notifications.printMessage("Por favor llena todas las respuestas", this.notifications.notificationType.error);
     }
+  }
+
+  createTicket(){
+    this.api.create(this.api.models.TICKET, 
+      {'event_id': this.event_id, 'user_id': this.user_id}
+    ).subscribe(
+      res=>{
+        this.router.navigate(["tickets"]);
+        this.notifications.printSuccessMessage("Inscripción realizada correctamente.");
+      },
+      err=>{
+        this.notifications.handleError(err);
+        this.notifications.printInformativeMessage("Por favor, comunícate con el administrador del evento");
+      }
+    );
   }
 
   validate(){
