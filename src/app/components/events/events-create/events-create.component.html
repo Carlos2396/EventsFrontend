@@ -1,0 +1,140 @@
+<section class="module bg-dark-30" data-background="assets/images/section-4.jpg">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+              <h1 class="module-title font-alt mb-0">Eventos</h1>
+          </div>
+      </div>
+  </div>
+</section>
+
+<section class="module">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 mb-sm-40">
+                <h4 class="font-alt">Eventos</h4>
+                <hr class="divider-w mb-10">
+                <form class="form"  [formGroup]="eventForm" (ngSubmit)="createEvent()">
+                    
+                    <!-- Nombre -->
+                    <div [ngClass]="{'form-group': true, 'has-error': submitted && f.name.errors}">
+                      <input formControlName="name" type="text" class="form-control" placeholder="Nombre del event"  >
+                      <!-- Frontend errors -->
+                      <div *ngIf="submitted && f.name.errors">
+                        <span *ngIf="submitted && f.name.errors.required" class="text-danger">Introduce el nombre del evento</span>
+                      </div>
+          
+                      <!-- Backend errors -->
+                      <div *ngFor="let err of errors.name">
+                        <span class="text-danger">{{ err }}</span>
+                      </div>
+                    </div>
+
+                    <!-- Inicio -->
+                    <label>Fecha de inicio</label>
+                    <div [ngClass]="{'form-group': true, 'has-error': submitted && f.starts.errors}">
+                      <input formControlName='starts' type="date" class="form-control"  >
+                      <!-- Frontend errors -->
+                      <div *ngIf="submitted && f.starts.errors">
+                        <span *ngIf="submitted && f.starts.errors.required" class="text-danger">Introduce la fecha de inicio</span>
+                      </div>
+          
+                      <!-- Backend errors -->
+                      <div *ngFor="let err of errors.starts">
+                        <span class="text-danger">{{ err }}</span>
+                      </div>
+                    </div>
+
+                    <!-- Fin -->
+                    <label>Fecha de termino</label>
+                    <div [ngClass]="{'form-group': true, 'has-error': submitted && f.end.errors}">
+                      <input formControlName='end' type="date" class="form-control"  >
+                      <!-- Frontend errors -->
+                      <div *ngIf="submitted && f.end.errors">
+                        <span *ngIf="submitted && f.end.errors.required" class="text-danger">Introduce la fecha de termino</span>
+                      </div>
+          
+                      <!-- Backend errors -->
+                      <div *ngFor="let err of errors.end">
+                        <span class="text-danger">{{ err }}</span>
+                      </div>
+                    </div>
+
+                    <!-- Inicio Registro-->
+                    <label>Fecha de inicio del registro</label>
+                    <div [ngClass]="{'form-group': true, 'has-error': submitted && f.registration_start.errors}">
+                      <input formControlName='registration_start' type="date" class="form-control"  >
+                      <!-- Frontend errors -->
+                      <div *ngIf="submitted && f.registration_start.errors">
+                        <span *ngIf="submitted && f.registration_start.errors.required" class="text-danger">Introduce la fecha de inicio del registro</span>
+                      </div>
+          
+                      <!-- Backend errors -->
+                      <div *ngFor="let err of errors.registration_start">
+                        <span class="text-danger">{{ err }}</span>
+                      </div>
+                    </div>
+
+                    <!-- Fin Registro-->
+                    <label>Fecha de fin del registro</label>
+                    <div [ngClass]="{'form-group': true, 'has-error': submitted && f.registration_end.errors}">
+                      <input formControlName='registration_end' type="date" class="form-control"  >
+                      <!-- Frontend errors -->
+                      <div *ngIf="submitted && f.registration_end.errors">
+                        <span *ngIf="submitted && f.registration_end.errors.required" class="text-danger">Introduce la fecha de fin del registro</span>
+                      </div>
+          
+                      <!-- Backend errors -->
+                      <div *ngFor="let err of errors.registration_end">
+                        <span class="text-danger">{{ err }}</span>
+                      </div>
+                    </div>
+
+                    <!-- Imagen -->
+                    <div [ngClass]="{'form-group': true, 'has-error': submitted && f.image.errors}">
+                      <input formControlName="image" type="text" class="form-control" placeholder="Link a imagen"  >
+                      <!-- Frontend errors -->
+                      <div *ngIf="submitted && f.image.errors">
+                        <span *ngIf="submitted && f.image.errors.required" class="text-danger">Introduce el link a la imagen</span>
+                      </div>
+          
+                      <!-- Backend errors -->
+                      <div *ngFor="let err of errors.image">
+                        <span class="text-danger">{{ err }}</span>
+                      </div>
+                    </div>
+                    
+                    <!-- Descripcion -->
+                    <div [ngClass]="{'form-group': true, 'has-error': submitted && f.description.errors}">
+                        <textarea formControlName='description' cols="40" rows="5" class="form-control" placeholder="Descripción"></textarea>
+                      <!-- Frontend errors -->
+                      <div *ngIf="submitted && f.description.errors">
+                        <span *ngIf="submitted && f.description.errors.required" class="text-danger">Introduce una descripción</span>
+                      </div>
+          
+                      <!-- Backend errors -->
+                      <div *ngFor="let err of errors.description">
+                        <span class="text-danger">{{ err }}</span>
+                      </div>
+                    </div>
+
+                    <label>Capacidad de participantes</label>
+                    <!-- Capacidad n -->
+                    <div [ngClass]="{'form-group': true, 'has-error': submitted && f.guest_capacity.errors}">
+                        <input formControlName = 'guest_capacity' type="number" min="10" calss="form-control"  >
+                      <!-- Frontend errors -->
+                      <div *ngIf="submitted && f.guest_capacity.errors">
+                        <span *ngIf="submitted && f.guest_capacity.errors.required" class="text-danger">Introduce una descripción</span>
+                      </div>
+          
+                      <!-- Backend errors -->
+                      <div *ngFor="let err of errors.guest_capacity">
+                        <span class="text-danger">{{ err }}</span>
+                      </div>
+                    </div>
+                    <button class="btn btn-b btn-round">Crear</button>
+                </form>           
+            </div>
+        </div>
+    </div>
+</section>
