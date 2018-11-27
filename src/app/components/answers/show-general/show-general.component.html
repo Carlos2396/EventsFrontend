@@ -15,7 +15,7 @@
           <h3 class="font-alt mb-0">Respuestas</h3>
               <div style="padding-left: 2%" *ngFor="let question of questions; index as i" class="panel panel-default">
                 <label>{{question}}</label>
-                <ng-container *ngFor="let answer of answers; index as j">
+                <ng-container *ngFor="let answer of answers[i]; index as j">
                   <p>{{getAnswers(i, j)}}</p>
                 </ng-container>
                 

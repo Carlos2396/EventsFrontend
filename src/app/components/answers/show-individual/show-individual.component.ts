@@ -19,7 +19,7 @@ export class ShowIndividualComponent implements OnInit {
   questions: String[] = [];
   user_id: number;
   ticket_id: number;
-  answers: String[] = [];
+  answers = [];
   user_answers = [];
   length:number = 0;
   questionCounter:number = 0;
@@ -58,7 +58,11 @@ export class ShowIndividualComponent implements OnInit {
             .subscribe(
               (res: any) => {
                 console.log(res);
-                this.answers = res;
+                this.user_answers = res;
+
+                for(var j = 0; j < this.user_answers.length; j++){
+                  this.answers[j] = this.user_answers[j].pivot.answer;
+                }
               },
               (err: HttpErrorResponse) => {
                 console.log(err);
