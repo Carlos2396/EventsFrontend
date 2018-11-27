@@ -1,0 +1,36 @@
+<section class="module">
+  <div class="container">
+    <div class="row multi-columns-row post-columns">
+      <div class="col-sm-6 col-md-4 col-lg-4"></div>
+      <div class="col-sm-6 col-md-4 col-lg-4">
+        <div class="post" >
+          <div class="post-thumbnail"><img src="{{user.image}}"/></div>
+          <div class="post-header font-alt">
+            <h2 class="post-title">{{user.firstname}} {{user.lastname}}</h2>
+            <div class="post-meta">{{user.alias}}
+            </div>
+          </div>
+          <div class="post-entry" >
+            <p *ngIf="user.birthdate != null">Cumpleaños: {{user.birthdate.substr(8, 2)}}/{{user.birthdate.substr(5, 2)}}/{{user.birthdate.substr(0, 4)}}</p>
+            <p>Genero: {{user.gender}}</p>
+            <p>Teléfono: {{user.phone}}</p>
+          </div>
+          <div class="post-entry center" >
+              <a class="btn btn-warning" (click)="toogle()">Cambiar contraseña</a>
+              <form class="form"  (ngSubmit)="changePassword()" *ngIf="changePss">
+                  <div class="form-group">
+                    <input [(ngModel)]='old_password' type="password" name="old_password" class="form-control" placeholder="Contraseña actual" required="true">
+                    <input [(ngModel)]='password' type="password" name="password" class="form-control" placeholder="Contraseña nueva" required="true">
+                    <input [(ngModel)]='password_confirmation' type="password" name="password_confirmation" class="form-control" placeholder="Confirmar contraseña" required="true">
+                  </div>
+                  <button class="btn btn-b btn-round">Cambiar</button>
+              </form>  
+          </div>
+          <div class="post-entry center" >
+              <a class="btn btn-danger" (click)="deleteTicket(event.id)">Eliminar cuenta</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

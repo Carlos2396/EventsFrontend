@@ -15,12 +15,12 @@
                 <h4 class="font-alt">Inicia sesión</h4>
                 <hr class="divider-w mb-10">
                 <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
-                    <div [ngClass]="{'form-group': true, 'has-error': submitted && f.email.errors}">
+                    <div [ngClass]="{'form-group': true, 'has-error': submitted && (f.email.errors || errors)}">
                         <input type="email" class="form-control" formControlName="email" placeholder="Correo electrónico"/>
                         
                         <!-- Frontend errors -->
                         <div *ngIf="submitted && f.email.errors">
-                            <span *ngIf="submitted && f.email.errors.required" class="text-danger">Introduce tu correo electrónico</span>
+                            <span *ngIf="submitted && (f.email.errors.required)" class="text-danger">Introduce tu correo electrónico</span>
                             <span *ngIf="submitted && f.email.errors.email" class="text-danger">Introduce un correo electrónico válido</span>        
                         </div>
 
@@ -30,7 +30,7 @@
                         </div>
                     </div>
 
-                    <div [ngClass]="{'form-group': true, 'has-error': submitted && f.password.errors}">
+                    <div [ngClass]="{'form-group': true, 'has-error': submitted && (f.password.errors || errors)}">
                         <input type="password" class="form-control" formControlName="password" placeholder="Contraseña"/>
                         
                         <!-- Frontend errors -->
@@ -47,8 +47,14 @@
                     <div class="form-group">
                         <button class="btn btn-round btn-b">Iniciar sesión</button>
                     </div>
-                    <div class="form-group"><a href="">¿Olvidaste tu contraseña?</a></div>
+                    <div class="form-group"><a (click)="sendResetPassword()">¿Olvidaste tu contraseña?</a></div>
                 </form>
+                <div *ngIf="confirmAccount">
+                    <br>
+                    <p><strong>Parece que no has confirmado tu cuenta.</strong> Puedes encontrar el correo de confirmación en la cuenta que registraste.</p>
+                    <p>Si no lo encuentras, da <a (click)="resendConfirmation()">click aqui para reenviarte el correo.</a></p>
+                </div>
+                
             </div>
         </div>
     </div>

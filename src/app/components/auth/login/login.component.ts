@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NotificationService } from '../../../services/notification.service';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
     selector: 'app-login',
@@ -11,18 +12,21 @@ import { NotificationService } from '../../../services/notification.service';
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    submitted = false;
+    redirectURL:string = '/events';
+    submitted:boolean;
+    confirmAccount:boolean;
+    emailSent:boolean;
+    forgetPassword:boolean;
     errors = {};
-    redirectURL = '/';
 
     loginForm: FormGroup;
 
-    constructor(private auth:AuthService, private router:Router, private formBuilder:FormBuilder, private notification:NotificationService) { }
+    constructor(public auth:AuthService, private account:AccountService, private router:Router, private formBuilder:FormBuilder, private notification:NotificationService) { }
 
     ngOnInit() {
-        /*if(this.auth.isLoggedIn()) {
+        if(this.auth.isLoggedIn()) {
             this.router.navigate([this.redirectURL]);
-        }*/
+        }
 
         this.loginForm = this.formBuilder.group({
             email: ['', [Validators.required, Validators.email]],
@@ -42,19 +46,84 @@ export class LoginComponent implements OnInit {
         this.auth.login(this.loginForm.value.email, this.loginForm.value.password)
         .subscribe(
             (res) => {
-                console.log(res);
                 this.auth.setSession(res);
                 this.router.navigate([this.redirectURL]);
             },
             (err: HttpErrorResponse) => {
-                console.log(err);
+                this.errors = {};
                 if(err.status == 400) { // validation errors
-                    this.errors = err.error.errors;   
-                    this.notification.printErrorMessage(err.error.message);
+                    this.errors = err.error.errors; 
                 }
+                else {
+                    if(err.status == 418) {
+                        this.confirmAccount = true;
+                    }
+                    else {
+                        if(err.status > 400 && err.status < 500) {
+                            this.notification.printErrorMessage(err.error.message);
+                        }
+                        else {
+                            this.notification.printNoticeMessage("Intenta de nuevo más tarde.");
+                        }
+                    }
+                }
+            }
+        );
+    }
 
-                if(err.status == 0) { // no response from server
-                    this.notification.printNoticeMessage("Intenta de nuevo más tarde.");
+    resendConfirmation() {
+        if(this.emailSent) return;
+
+        this.emailSent = true;
+
+        this.account.resendConfirmationEmail(this.loginForm.value.email)
+        .subscribe(
+            (res) => {
+                this.errors = {};
+                this.notification.printSuccessMessage('Se ha reenviado el correo de confirmación. Revisa tu bandeja.');
+            },
+            (err:HttpErrorResponse) => {
+                this.errors = {};
+                this.emailSent = false;
+                if(err.status == 400) { // validation errors
+                    this.errors = err.error.errors; 
+                }
+                else {
+                    if(err.status > 400 && err.status < 500) {
+                        this.notification.printErrorMessage(err.error.message);
+                    }
+                    else {
+                        this.notification.printNoticeMessage("Intenta de nuevo más tarde.");
+                    }
+                }
+            }
+        );
+    }
+
+    sendResetPassword() {
+        if(this.forgetPassword) return;
+
+        this.forgetPassword = true;
+
+        this.account.sendPasswordReset(this.loginForm.value.email)
+        .subscribe(
+            (res) => {
+                this.errors = {};
+                this.notification.printSuccessMessage('Se te ha enviado un correo electrónico para reestablecer tu contraseña.');
+            },
+            (err:HttpErrorResponse) => {
+                this.errors = {};
+                this.forgetPassword = false;
+                if(err.status == 400) { // validation errors
+                    this.errors = err.error.errors; 
+                }
+                else {
+                    if(err.status > 400 && err.status < 500) {
+                        this.notification.printErrorMessage(err.error.message);
+                    }
+                    else {
+                        this.notification.printNoticeMessage("Intenta de nuevo más tarde.");
+                    }
                 }
             }
         );

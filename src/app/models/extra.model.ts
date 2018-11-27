@@ -8,8 +8,11 @@ export class Extra {
         public updatedAt?: Date,
         public createdAt?: Date,
         public users?: User[],
-        public event?: Event[],
+        public event?: Event,
         public answers?: Answer[],
+        public answer?: string,
+        public event_id?: number,
+        public user_id?: number,
         public id?: number,
     ) { }
 }

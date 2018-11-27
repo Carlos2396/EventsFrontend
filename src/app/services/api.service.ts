@@ -11,22 +11,53 @@ export class APIService {
   endpoint:string;
   headers: HttpHeaders;
 
+  models = {
+    ANSWER: "answers",
+    EVENT: "events",
+    EXTRA: "extras",
+    TICKET: "tickets"
+  }
+
   constructor(private http:HttpClient, private auth:AuthService) { 
     this.endpoint = environment.APIEndpoint;
+    this.refreshHeaders();
+  }
+
+  refreshHeaders() {
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Accept': 'application/json'
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ' + this.auth.getToken()
     });
+  }
 
-    if(this.auth.isLoggedIn()) {
-      this.headers.set('Authorization', 'Bearer ' + this.auth.getToken());
-    }
+  /**
+   * List tickets
+   */
+  listTickets(userId: string) {
+    this.refreshHeaders();
+    return this.http.get(
+      this.endpoint + '/tickets/' + userId,
+      { headers: this.headers }
+    );
+  }
+
+  /*
+   * Delete tickets
+   */
+  deleteTickets(userId:any, ticketId: any) {
+    this.refreshHeaders();
+    return this.http.delete(
+      this.endpoint + '/users/' + userId + '/events/' + ticketId,
+      { headers: this.headers }
+    )
   }
 
   /**
    * CRUD Requests
    */
   list(model: string) {
+    this.refreshHeaders();
     return this.http.get(
       this.endpoint + '/' + model,
       { headers: this.headers }
@@ -34,6 +65,7 @@ export class APIService {
   }
 
   retrieve(model:string, id:any) {
+    this.refreshHeaders();
     return this.http.get(
       this.endpoint + '/' + model + '/' + id,
       { headers: this.headers }
@@ -41,6 +73,7 @@ export class APIService {
   }
 
   create(model:string, body:any) {
+    this.refreshHeaders();
     return this.http.post(
       this.endpoint + '/' + model,
       body,
@@ -49,6 +82,7 @@ export class APIService {
   }
 
   update(model:string, id:any, body:any) {
+    this.refreshHeaders();
     return this.http.put(
       this.endpoint + '/' + model + '/' + id,
       body,
@@ -57,49 +91,33 @@ export class APIService {
   }
 
   delete(model:string, id:any) {
+    this.refreshHeaders();
     return this.http.delete(
       this.endpoint + '/' + model + '/' + id,
       { headers: this.headers }
     )
   }
 
-  /**
-   * Requests to modify logged account
-   */
   register(body:any) {
     return this.http.post(
-      this.endpoint + '/register',
+      this.endpoint + '/users',
       body,
       { headers: this.headers }
     );
   }
-  
-  getLogged() {
-    this.http.get(
-      this.endpoint + '/user',
+
+  //Other functions
+  filterAnswers(extra_id:any, user_id:any){
+    return this.http.get(
+      this.endpoint + '/extras/' + extra_id + '/' + user_id,
       { headers: this.headers }
-    )
+    );
   }
 
-  updateAccount() {
-    this.http.put(
-      this.endpoint + '/user',
+  allAnswers(extra_id:any){
+    return this.http.get(
+      this.endpoint + '/extras/' + 'general/' + extra_id,
       { headers: this.headers }
-    )
-  }
-
-  deleteAccount() {
-    this.http.delete(
-      this.endpoint + '/user',
-      { headers: this.headers }
-    )
-  }
-
-  changePassword(body:any) {
-    return this.http.post(
-      this.endpoint + 'user/changePassword',
-      body,
-      { headers: this.headers }
-    )
+    );
   }
 }

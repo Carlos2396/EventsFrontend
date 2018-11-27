@@ -1,0 +1,41 @@
+<section class="module">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="post">
+          <div class="post-thumbnail">
+            <a href="#"><img src="assets/images/post-1.jpg" alt="Blog-post Thumbnail"></a>
+          </div>
+          <div class="post-header font-alt">
+            <h2 class="post-title">
+              <a href="#">{{event.name}}</a>
+            </h2>
+            <div class="post-meta">By {{event.organizer_id}}
+            </div>
+          </div>
+          <div class="post-entry">
+            <p>{{event.description}}</p>
+          </div>
+          
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-3 col-md-offset-1 sidebar">
+        <div class="widget">
+          <h4 class="widget-title font-alt">Acerca de este evento</h4>
+          <h5>Cupo: {{available_guests}}/{{event.guest_capacity}} personas</h5>
+          <h5>Fecha del evento: {{event.starts | date:'medium'}}</h5>
+          <h5>Fecha límite de registro: {{event.registration_end | date:'medium'}}</h5>
+          <button class="btn btn-d btn-circle btn-block" *ngIf="userId != event.organizer.id" (click)="toRegisterEvent()">Registrarse</button>
+          <button class="btn btn-info btn-circle btn-block" *ngIf="userId == event.organizer.id">Editar evento</button>
+          <button class="btn btn-danger btn-circle btn-block" *ngIf="userId == event.organizer.id" (click) = "deleteEvent(event.id)">Eliminar evento</button>t
+        </div>  
+      </div>
+    </div>
+    <div class="row">
+      <h5>Ubicaciones del evento</h5>
+      <app-location-index></app-location-index>
+      <h5>Patrocinadores</h5>
+      <app-sponsors-index></app-sponsors-index>
+    </div>
+  </div>
+</section>
