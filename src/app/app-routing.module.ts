@@ -12,6 +12,7 @@ import { UserShowComponent } from './components/users/user-show/user-show.compon
 import { ShowIndividualComponent } from './components/answers/show-individual/show-individual.component';
 import { ShowGeneralComponent } from './components/answers/show-general/show-general.component';
 import { SponsorsCreateComponent } from './components/sponsors/sponsors-create/sponsors-create.component';
+import { EventsCreateComponent } from './components/events/events-create/events-create.component';
 
 const routes: Routes = [
     { path: '', component:LoginComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
     { path: 'confirmar/:uuid', component: AccountConfirmationComponent },
     { path: 'contraseña/reestablecer/:token', component: PasswordResetComponent },
     { path: 'events', component: EventsIndexComponent},
+    { path: 'events/create', component: EventsCreateComponent},
     { path: 'events/sponsors/:eventId', component: SponsorsCreateComponent},
     { path: 'events/:id', component: EventsShowComponent},
     { path: 'events/:id/extras', component: ShowGeneralComponent},

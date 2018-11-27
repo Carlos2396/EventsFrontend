@@ -27,6 +27,7 @@ import { UserShowComponent } from './components/users/user-show/user-show.compon
 import { ShowIndividualComponent } from './components/answers/show-individual/show-individual.component';
 import { ShowGeneralComponent } from './components/answers/show-general/show-general.component';
 import { SponsorsCreateComponent } from './components/sponsors/sponsors-create/sponsors-create.component';
+import { EventsCreateComponent } from './components/events/events-create/events-create.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { SponsorsCreateComponent } from './components/sponsors/sponsors-create/s
     ShowIndividualComponent,
     ShowGeneralComponent,
     SponsorsCreateComponent,
+    EventsCreateComponent,
   ],
   imports: [
     BrowserModule,
