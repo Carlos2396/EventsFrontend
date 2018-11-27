@@ -29,6 +29,7 @@ import { ShowGeneralComponent } from './components/answers/show-general/show-gen
 import { SponsorsCreateComponent } from './components/sponsors/sponsors-create/sponsors-create.component';
 import { EventsCreateComponent } from './components/events/events-create/events-create.component';
 import { EventsEditComponent } from './components/events/events-edit/events-edit.component';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { EventsEditComponent } from './components/events/events-edit/events-edit
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    NgxQRCodeModule,
     AgmCoreModule.forRoot({apiKey: 'AIzaSyBIuKYKKyElbSMI74Thrh9zaK8BPAyHs1M'}),
   ],
   providers: [
