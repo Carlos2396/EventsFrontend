@@ -17,9 +17,9 @@ export class CreateComponent implements OnInit {
   event_id: number;
   extras: Extra[];
   extra_number: number;
-  questions: String[] = [];
+  questions: string[] = [];
   user_id: number;
-  answers: String[] = [];
+  answers: string[] = [];
 
   map = {
     user_id : 0,
@@ -49,26 +49,31 @@ export class CreateComponent implements OnInit {
 
 
   submitAnswers() {
+    
+    for(var i = 0; i < this.answers.length; i++){
+      this.extras[i].answer = this.answers[i];
+      this.extras[i].user_id = this.user_id;
+      this.extras[i].event_id = this.event_id;
+    }
+
+    console.log(this.extras);
+
     if(this.validate()){
-      var i;
 
       let headers = new HttpHeaders({
         'Content-Type':'application/json'
       })
-
-      for(i = 0; i < this.answers.length; i++){
-        this.api.create(this.api.models.ANSWER,
-          {user_id: this.user_id, extra_id: this.extras[i].id, answer: this.answers[i]}
-        ).subscribe(
-          res =>{
-            this.notifications.printMessage(res, this.notifications.notificationType.informative);
-          },
-          err =>{
-            console.log(err);
-            this.notifications.handleError(err);
-          }
-        )
-      }
+      this.api.create(this.api.models.ANSWER,
+        {arr: this.extras}
+      ).subscribe(
+        res =>{
+          this.notifications.printMessage(res, this.notifications.notificationType.informative);
+        },
+        err =>{
+          console.log(err);
+          this.notifications.handleError(err);
+        }
+      )
     }
     else{
       this.notifications.printMessage("Por favor llena todas las respuestas", this.notifications.notificationType.error);
