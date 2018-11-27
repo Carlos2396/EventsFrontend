@@ -23,7 +23,7 @@ const routes: Routes = [
     { path: 'contraseña/reestablecer/:token', component: PasswordResetComponent },
     { path: 'events', component: EventsIndexComponent},
     { path: 'events/create', component: EventsCreateComponent},
-    { path: 'events/edit/:eventId', component: EventsEditComponent}
+    { path: 'events/edit/:eventId', component: EventsEditComponent},
     { path: 'events/sponsors/:eventId', component: SponsorsCreateComponent},
     { path: 'events/:id', component: EventsShowComponent},
     { path: 'events/:id/extras', component: ShowGeneralComponent},
