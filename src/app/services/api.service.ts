@@ -14,7 +14,8 @@ export class APIService {
   models = {
     ANSWER: "answers",
     EVENT: "events",
-    EXTRA: "extras"
+    EXTRA: "extras",
+    TICKET: "tickets"
   }
 
   constructor(private http:HttpClient, private auth:AuthService) { 
