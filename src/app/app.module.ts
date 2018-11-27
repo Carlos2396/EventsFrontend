@@ -28,6 +28,7 @@ import { ShowIndividualComponent } from './components/answers/show-individual/sh
 import { ShowGeneralComponent } from './components/answers/show-general/show-general.component';
 import { SponsorsCreateComponent } from './components/sponsors/sponsors-create/sponsors-create.component';
 import { EventsCreateComponent } from './components/events/events-create/events-create.component';
+import { EventsEditComponent } from './components/events/events-edit/events-edit.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { EventsCreateComponent } from './components/events/events-create/events-
     ShowGeneralComponent,
     SponsorsCreateComponent,
     EventsCreateComponent,
+    EventsEditComponent,
   ],
   imports: [
     BrowserModule,

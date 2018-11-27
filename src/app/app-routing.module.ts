@@ -13,6 +13,7 @@ import { ShowIndividualComponent } from './components/answers/show-individual/sh
 import { ShowGeneralComponent } from './components/answers/show-general/show-general.component';
 import { SponsorsCreateComponent } from './components/sponsors/sponsors-create/sponsors-create.component';
 import { EventsCreateComponent } from './components/events/events-create/events-create.component';
+import { EventsEditComponent } from './components/events/events-edit/events-edit.component';
 
 const routes: Routes = [
     { path: '', component:LoginComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
     { path: 'contraseña/reestablecer/:token', component: PasswordResetComponent },
     { path: 'events', component: EventsIndexComponent},
     { path: 'events/create', component: EventsCreateComponent},
+    { path: 'events/edit/:eventId', component: EventsEditComponent}
     { path: 'events/sponsors/:eventId', component: SponsorsCreateComponent},
     { path: 'events/:id', component: EventsShowComponent},
     { path: 'events/:id/extras', component: ShowGeneralComponent},
