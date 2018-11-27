@@ -50,8 +50,8 @@ export class AccountService {
 
   changePassword(body:any) {
     this.refreshHeaders();
-    return this.http.post(
-      this.endpoint + 'user/changePassword',
+    return this.http.put(
+      this.endpoint + '/user/changePassword',
       body,
       { headers: this.headers }
     )

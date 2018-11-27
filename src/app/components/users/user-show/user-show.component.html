@@ -16,7 +16,15 @@
             <p>Teléfono: {{user.phone}}</p>
           </div>
           <div class="post-entry center" >
-              <a class="btn btn-warning" (click)="deleteTicket(event.id)">Cambiar contraseña</a>
+              <a class="btn btn-warning" (click)="toogle()">Cambiar contraseña</a>
+              <form class="form"  (ngSubmit)="changePassword()" *ngIf="changePss">
+                  <div class="form-group">
+                    <input [(ngModel)]='old_password' type="password" name="old_password" class="form-control" placeholder="Contraseña actual" required="true">
+                    <input [(ngModel)]='password' type="password" name="password" class="form-control" placeholder="Contraseña nueva" required="true">
+                    <input [(ngModel)]='password_confirmation' type="password" name="password_confirmation" class="form-control" placeholder="Confirmar contraseña" required="true">
+                  </div>
+                  <button class="btn btn-b btn-round">Cambiar</button>
+              </form>  
           </div>
           <div class="post-entry center" >
               <a class="btn btn-danger" (click)="deleteTicket(event.id)">Eliminar cuenta</a>
