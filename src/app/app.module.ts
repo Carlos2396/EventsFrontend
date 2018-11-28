@@ -27,6 +27,7 @@ import { UserShowComponent } from './components/users/user-show/user-show.compon
 import { ShowIndividualComponent } from './components/answers/show-individual/show-individual.component';
 import { ShowGeneralComponent } from './components/answers/show-general/show-general.component';
 import { SponsorsCreateComponent } from './components/sponsors/sponsors-create/sponsors-create.component';
+import { CreateExtrasComponent } from './components/extras/create-extras/create-extras.component';
 import { EventsCreateComponent } from './components/events/events-create/events-create.component';
 import { EventsEditComponent } from './components/events/events-edit/events-edit.component';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
@@ -50,6 +51,7 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
     ShowIndividualComponent,
     ShowGeneralComponent,
     SponsorsCreateComponent,
+    CreateExtrasComponent,
     EventsCreateComponent,
     EventsEditComponent,
   ],
