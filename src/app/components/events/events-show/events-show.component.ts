@@ -40,6 +40,10 @@ export class EventsShowComponent implements OnInit {
     this.router.navigate(["registerEvent/"+this.id]);
   }
 
+  toEditEvent(){
+    this.router.navigate(["events/edit/" + this.id]);
+  }
+
   deleteEvent($eventId){
     this.api.delete(this.api.models.EVENT, $eventId)
       .subscribe(

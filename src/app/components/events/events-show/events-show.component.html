@@ -4,7 +4,7 @@
       <div class="col-sm-8">
         <div class="post">
           <div class="post-thumbnail">
-            <a href="#"><img src="assets/images/post-1.jpg" alt="Blog-post Thumbnail"></a>
+            <a href="#"><img src="{{event.image}}" alt="Blog-post Thumbnail"></a>
           </div>
           <div class="post-header font-alt">
             <h2 class="post-title">
@@ -26,8 +26,8 @@
           <h5>Fecha del evento: {{event.starts | date:'medium'}}</h5>
           <h5>Fecha límite de registro: {{event.registration_end | date:'medium'}}</h5>
           <button class="btn btn-d btn-circle btn-block" *ngIf="userId != event.organizer.id" (click)="toRegisterEvent()">Registrarse</button>
-          <button class="btn btn-info btn-circle btn-block" *ngIf="userId == event.organizer.id">Editar evento</button>
-          <button class="btn btn-danger btn-circle btn-block" *ngIf="userId == event.organizer.id" (click) = "deleteEvent(event.id)">Eliminar evento</button>t
+          <button class="btn btn-info btn-circle btn-block" *ngIf="userId == event.organizer.id" (click)="toEditEvent()">Editar evento</button>
+          <button class="btn btn-danger btn-circle btn-block" *ngIf="userId == event.organizer.id" (click) = "deleteEvent(event.id)">Eliminar evento</button>
         </div>  
       </div>
     </div>

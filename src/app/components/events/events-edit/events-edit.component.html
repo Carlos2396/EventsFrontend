@@ -1,0 +1,80 @@
+<section class="module bg-dark-30" data-background="assets/images/section-4.jpg">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+              <h1 class="module-title font-alt mb-0">Eventos</h1>
+          </div>
+      </div>
+  </div>
+</section>
+
+<section class="module">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 mb-sm-40">
+                <h4 class="font-alt">Eventos</h4>
+                <hr class="divider-w mb-10">
+                <form class="form"  [formGroup]="eventForm" (ngSubmit)="editEvent()">
+                    
+                    <!-- Nombre -->
+                    <div [ngClass]="{'form-group': true, 'has-error': submitted && f.nameE.errors}">
+                      <input formControlName="nameE" type="text" class="form-control" placeholder="Nombre del evento"  value="{{event.name}}">
+                      <!-- Frontend errors -->
+                      <div *ngIf="submitted && f.nameE.errors">
+                        <span *ngIf="submitted && f.nameE.errors.required" class="text-danger">Introduce el nombre del evento</span>
+                      </div>
+          
+                      <!-- Backend errors -->
+                      <div *ngFor="let err of errors.name">
+                        <span class="text-danger">{{ err }}</span>
+                      </div>
+                    </div>
+
+                    <!-- Imagen -->
+                    <div [ngClass]="{'form-group': true, 'has-error': submitted && f.image.errors}">
+                      <input formControlName="image" type="text" class="form-control" placeholder="Link a imagen"  value="{{event.image}}">
+                      <!-- Frontend errors -->
+                      <div *ngIf="submitted && f.image.errors">
+                        <span *ngIf="submitted && f.image.errors.required" class="text-danger">Introduce el link a la imagen</span>
+                      </div>
+          
+                      <!-- Backend errors -->
+                      <div *ngFor="let err of errors.image">
+                        <span class="text-danger">{{ err }}</span>
+                      </div>
+                    </div>
+                    
+                    <!-- Descripcion -->
+                    <div [ngClass]="{'form-group': true, 'has-error': submitted && f.description.errors}">
+                        <textarea formControlName='description' cols="40" rows="5" class="form-control" placeholder="Descripción" value="{{event.description}}"></textarea>
+                      <!-- Frontend errors -->
+                      <div *ngIf="submitted && f.description.errors">
+                        <span *ngIf="submitted && f.description.errors.required" class="text-danger">Introduce una descripción</span>
+                      </div>
+          
+                      <!-- Backend errors -->
+                      <div *ngFor="let err of errors.description">
+                        <span class="text-danger">{{ err }}</span>
+                      </div>
+                    </div>
+
+                    <label>Capacidad de participantes</label>
+                    <!-- Capacidad n -->
+                    <div [ngClass]="{'form-group': true, 'has-error': submitted && f.guest_capacity.errors}">
+                        <input formControlName = 'guest_capacity' type="number" min="10" calss="form-control"  value="{{event.guest_capacity}}">
+                      <!-- Frontend errors -->
+                      <div *ngIf="submitted && f.guest_capacity.errors">
+                        <span *ngIf="submitted && f.guest_capacity.errors.required" class="text-danger">Introduce capacidad de participantes</span>
+                      </div>
+          
+                      <!-- Backend errors -->
+                      <div *ngFor="let err of errors.guest_capacity">
+                        <span class="text-danger">{{ err }}</span>
+                      </div>
+                    </div>
+                    <button class="btn btn-b btn-round">Editar</button>
+                </form>           
+            </div>
+        </div>
+    </div>
+</section>

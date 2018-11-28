@@ -28,6 +28,9 @@ import { ShowIndividualComponent } from './components/answers/show-individual/sh
 import { ShowGeneralComponent } from './components/answers/show-general/show-general.component';
 import { SponsorsCreateComponent } from './components/sponsors/sponsors-create/sponsors-create.component';
 import { CreateExtrasComponent } from './components/extras/create-extras/create-extras.component';
+import { EventsCreateComponent } from './components/events/events-create/events-create.component';
+import { EventsEditComponent } from './components/events/events-edit/events-edit.component';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,8 @@ import { CreateExtrasComponent } from './components/extras/create-extras/create-
     ShowGeneralComponent,
     SponsorsCreateComponent,
     CreateExtrasComponent,
+    EventsCreateComponent,
+    EventsEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +61,7 @@ import { CreateExtrasComponent } from './components/extras/create-extras/create-
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    NgxQRCodeModule,
     AgmCoreModule.forRoot({apiKey: 'AIzaSyBIuKYKKyElbSMI74Thrh9zaK8BPAyHs1M'}),
   ],
   providers: [

@@ -8,6 +8,10 @@ import { Router, NavigationExtras } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { NotificationService } from '../../../services/notification.service';
 import { APIService } from 'src/app/services/api.service';
+import { SELECT_VALUE_ACCESSOR } from '@angular/forms/src/directives/select_control_value_accessor';
+import { Ticket } from 'src/app/models/ticket.model';
+import { AccountService } from 'src/app/services/account.service';
+
 
 @Component({
   selector: 'app-tickets-list',
@@ -16,21 +20,26 @@ import { APIService } from 'src/app/services/api.service';
 })
 export class TicketsListComponent implements OnInit {
 
-  constructor(private notification:NotificationService, private api:APIService, private auth:AuthService, private router:Router) { }
+  constructor(private account:AccountService,private notification:NotificationService, private api:APIService, private auth:AuthService, private router:Router) { }
 
   events: Event[];
-
+  //elementType : 'url' | 'canvas' | 'img' = 'url';
+  values : String[];
+  user : User;
   ngOnInit() {
     if(this.auth.getUser() == null){
       this.router.navigate(['/']);
     }
     else{
-      this.api.listTickets(this.auth.getUser().id)
+      this.account.getLogged()
       .subscribe(
-        (res:Event[]) => {
-          console.log(res);
-          console.log("lolol")
-          this.events = res;
+        (res:User) => {
+          this.user = res;
+          this.values = [];
+          for(var i = 0; i < res.events.length; i++){
+            this.values[i] = res.events[i].pivot.code;
+          }
+          this.events = res.events;
         },
         (err:HttpErrorResponse) => {
           this.notification.handleError(err);
@@ -39,6 +48,7 @@ export class TicketsListComponent implements OnInit {
     }
     
   }
+
 
   irApag($id){
     console.log($id);

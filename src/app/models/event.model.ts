@@ -27,5 +27,6 @@ export class Event {
         public sponsors?: Sponsor[],
         public guest_capacity?: number,
         public id?: number,
+        public pivot?
     ) { }
 }
