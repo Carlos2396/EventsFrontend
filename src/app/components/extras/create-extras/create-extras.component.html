@@ -1,0 +1,22 @@
+<section class="module">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+          <h3 class="font-alt mb-0">Preguntas extra</h3>
+          <form class="form"  (ngSubmit)="submitAnswers()">
+            <div *ngFor="let question of questions; index as i; trackBy:getIndex" class="panel panel-default">
+              <h3 class="font-alt mb-0">Pregunta {{(i+1)}}</h3>
+              <div class="form-group">
+                <input [(ngModel)]='questions[i]' name="{{i}}" class="form-control" placeholder="Pregunta" type="text" required="true">
+              </div>
+            </div>
+            <button (click)="removeQuestion()" class="btn btn-b btn-round">-</button>
+            <button (click)="addQuestion()" class="btn btn-b btn-round">+</button>
+            <br>
+            <br>
+            <button (click)="submitExtras()" class="btn btn-b btn-round">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+</section>
