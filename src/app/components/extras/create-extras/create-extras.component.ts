@@ -17,6 +17,7 @@ export class CreateExtrasComponent implements OnInit {
   extras:Extra[] = [];
   quantity:number = 1;
   event_id:number;
+  abled:boolean = true;
 
   constructor(private auth: AuthService, private notifications: NotificationService, private api: APIService, private router: Router, private route: ActivatedRoute) { }
 
@@ -43,13 +44,17 @@ export class CreateExtrasComponent implements OnInit {
   }
 
   submitExtras(){
+    this.abled = false;
     if(!this.validate()){
       this.notifications.printErrorMessage("Debes llenar todos los campos.");
       this.notifications.printInformativeMessage("Si no quieres tantas preguntas, presiona el botón de \"-\"");
+      this.abled = true;
       return;
     }
 
     for(var i = 0; i < this.questions.length; i++){
+      this.extras.push(new Extra(""));
+      console.log(this.extras);
       this.extras[i].text = this.questions[i];
       this.extras[i].event_id = this.event_id;
     }
@@ -66,6 +71,7 @@ export class CreateExtrasComponent implements OnInit {
       err =>{
         console.log(err);
         this.notifications.handleError(err);
+        this.abled = true;
       }
     )
   }

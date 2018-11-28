@@ -58,8 +58,7 @@ export class EventsCreateComponent implements OnInit {
     .subscribe(
       (res:Event) => {
         console.log("2");
-        this.notifications.printSuccessMessage("Se ha creado tu evento");
-        this.router.navigate(['events/' + res.id]);
+        this.router.navigate(['extras/' + res.id]);
       },
       (err: HttpErrorResponse) => {
         console.log("3");
